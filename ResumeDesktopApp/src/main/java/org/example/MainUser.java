@@ -19,44 +19,45 @@ import org.example.main.Context;
  */
 public class MainUser extends javax.swing.JFrame {
 
-        private UserDaoInter userDao = Context.instanceUserDao();
-        private CountryDaoInter countryDao=Context.instanceCountryDao();
-         User loggedInUser;
-    
+    private UserDaoInter userDao = Context.instanceUserDao();
+    private CountryDaoInter countryDao = Context.instanceCountryDao();
+    User loggedInUser;
+
     /**
      * Creates new form Main1
      */
     public MainUser() {
         initComponents();
-        loggedInUser =  userDao.getById(8);
+        loggedInUser = userDao.getById(8);
         fillUserComponents();
     }
-    
-    private SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-    
-    private void fillUserComponents(){
+
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    private void fillWindow() {
+        List<Country> countries = countryDao.getAll();
+        for (Country c : countries) {
+            cbCountry.addItem(c);
+        }
+    }
+
+    private void fillUserComponents() {
         txtName.setText(loggedInUser.getName());
         txtSurname.setText(loggedInUser.getSurname());
         txtAreaProfile.setText(loggedInUser.getProfileDesc());
         txtPhone.setText(loggedInUser.getPhone());
-        Date dt=loggedInUser.getBirthDate();
-        String dtStr=sdf.format(dt);
+        Date dt = loggedInUser.getBirthDate();
+        String dtStr = sdf.format(dt);
         txtBirthdate.setText(dtStr);
         txtEmail.setText(loggedInUser.getEmail());
         txtAddress.setText(loggedInUser.getAddress());
-        
-        List<Country> countries =countryDao.getAll();
-        for(Country c : countries){
-        cbCountry.addItem(c);
-        
-    }
-        cbCountry.addItem(new Country(1,  "Azerbaijan", "Azerbaijani"));
-        cbCountry.addItem(new Country(2, "USA", "American"));
-        
-        cbNationality.addItem(new Country(1, "Azerbaijani","Azerbaijan"));
-        cbNationality.addItem(new Country(2, "American", "USA"));
+        cbCountry.setSelectedItem(loggedInUser.getBirthPlace());
         
         
+
+        
+      
+
     }
 
     /**
@@ -367,38 +368,36 @@ public class MainUser extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSurnameActionPerformed
 
 
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      try{
-      String name=txtName.getText();
-      String surName=txtSurname.getText();
-      String profileDescription=txtAreaProfile.getText();
-      String birthDate=txtBirthdate.getText();
-      String email=txtEmail.getText();
-      String phone=txtPhone.getText();
-      String address=txtAddress.getText();
-      
-     long l=sdf.parse(birthDate).getTime();
-     Date bd=new Date(l);
-     
-     Country country =(Country) cbCountry.getSelectedItem();
-     Country nationality=(Country) cbNationality.getSelectedItem();
-     
-     
-     loggedInUser.setName(name);
-     loggedInUser.setSurname(surName);
-     loggedInUser.setProfileDesc(profileDescription);
-     loggedInUser.setEmail(email);
-     loggedInUser.setBirthDate(bd);
-     loggedInUser.setPhone(phone);
-     loggedInUser.setAddress(address);
-     loggedInUser.setBirthPlace(country);
-     loggedInUser.setNationality(nationality);
-     
-     userDao.updateUser(loggedInUser);
-      }catch(Exception ex){
-          ex.printStackTrace();
-      }
+        try {
+            String name = txtName.getText();
+            String surName = txtSurname.getText();
+            String profileDescription = txtAreaProfile.getText();
+            String birthDate = txtBirthdate.getText();
+            String email = txtEmail.getText();
+            String phone = txtPhone.getText();
+            String address = txtAddress.getText();
+
+            long l = sdf.parse(birthDate).getTime();
+            Date bd = new Date(l);
+
+            Country country = (Country) cbCountry.getSelectedItem();
+            Country nationality = (Country) cbNationality.getSelectedItem();
+
+            loggedInUser.setName(name);
+            loggedInUser.setSurname(surName);
+            loggedInUser.setProfileDesc(profileDescription);
+            loggedInUser.setEmail(email);
+            loggedInUser.setBirthDate(bd);
+            loggedInUser.setPhone(phone);
+            loggedInUser.setAddress(address);
+            loggedInUser.setBirthPlace(country);
+            loggedInUser.setNationality(nationality);
+
+            userDao.updateUser(loggedInUser);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
