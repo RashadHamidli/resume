@@ -30,25 +30,32 @@ public class MainUser extends javax.swing.JFrame {
     public MainUser() {
         initComponents();
         loggedInUser = userDao.getById(8);
+        fillWindow();
         fillUserComponents();
     }
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     
-
+  private void fillWindow() {
+        List<Country> countries = countryDao.getAll();
+        for (Country c : countries) {
+            cbCountry.addItem(c);
+            cbNationality.addItem(c);
+        }
+    }
     private void fillUserComponents() {
-//        txtName.setText(loggedInUser.getName());
-//        txtSurname.setText(loggedInUser.getSurname());
+        txtName.setText(loggedInUser.getName());
+        txtSurname.setText(loggedInUser.getSurname());
 //        txtAreaProfile.setText(loggedInUser.getProfileDesc());
-//        txtPhone.setText(loggedInUser.getPhone());
-//        Date dt = loggedInUser.getBirthDate();
-//        String dtStr = sdf.format(dt);
-//        txtBirthdate.setText(dtStr);
-//        txtEmail.setText(loggedInUser.getEmail());
-//        txtAddress.setText(loggedInUser.getAddress());
-//        cbCountry.setSelectedItem(loggedInUser.getBirthPlace());
-//        cbNationality.setSelectedItem(loggedInUser.getNationality());
+        txtPhone.setText(loggedInUser.getPhone());
+        Date dt = loggedInUser.getBirthDate();
+        String dtStr = sdf.format(dt);
+        txtBirthdate.setText(dtStr);
+        txtEmail.setText(loggedInUser.getEmail());
+        txtAddress.setText(loggedInUser.getAddress());
+        cbCountry.setSelectedItem(loggedInUser.getBirthPlace());
+        cbNationality.setSelectedItem(loggedInUser.getNationality());
 
     }
 
@@ -70,6 +77,19 @@ public class MainUser extends javax.swing.JFrame {
         skillsPanel2 = new org.example.panel.SkillsPanel();
         pnlHistory = new javax.swing.JPanel();
         pnlDetails = new javax.swing.JPanel();
+        pnlDetails1 = new javax.swing.JPanel();
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        lblPhone = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblBirthdate = new javax.swing.JLabel();
+        txtBirthdate = new javax.swing.JTextField();
+        lblBirthplace = new javax.swing.JLabel();
+        lblNationality = new javax.swing.JLabel();
+        cbCountry = new javax.swing.JComboBox<>();
+        cbNationality = new javax.swing.JComboBox<>();
         pnlUserInfo = new javax.swing.JPanel();
         Name = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -136,7 +156,7 @@ public class MainUser extends javax.swing.JFrame {
             .addGroup(pnlSkillsLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(skillsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(384, Short.MAX_VALUE))
             .addGroup(pnlSkillsLayout.createSequentialGroup()
                 .addComponent(skillsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -152,20 +172,155 @@ public class MainUser extends javax.swing.JFrame {
         );
         pnlHistoryLayout.setVerticalGroup(
             pnlHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
         );
 
         tpUserInfo.addTab("Employment History", pnlHistory);
+
+        lblAddress.setBackground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("Address");
+        lblAddress.setToolTipText("Enter your name");
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+
+        lblPhone.setBackground(new java.awt.Color(255, 255, 255));
+        lblPhone.setText("Phone");
+        lblPhone.setToolTipText("Enter your name");
+
+        txtPhone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPhoneActionPerformed(evt);
+            }
+        });
+
+        lblEmail.setBackground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("Email");
+        lblEmail.setToolTipText("Enter your name");
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        lblBirthdate.setBackground(new java.awt.Color(255, 255, 255));
+        lblBirthdate.setText("Birthdate");
+        lblBirthdate.setToolTipText("Enter your name");
+
+        txtBirthdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBirthdateActionPerformed(evt);
+            }
+        });
+
+        lblBirthplace.setBackground(new java.awt.Color(255, 255, 255));
+        lblBirthplace.setText("Birthplace");
+        lblBirthplace.setToolTipText("Enter your name");
+
+        lblNationality.setBackground(new java.awt.Color(255, 255, 255));
+        lblNationality.setText("Nationality");
+        lblNationality.setToolTipText("Enter your name");
+
+        cbCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCountryActionPerformed(evt);
+            }
+        });
+
+        cbNationality.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNationalityActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlDetails1Layout = new javax.swing.GroupLayout(pnlDetails1);
+        pnlDetails1.setLayout(pnlDetails1Layout);
+        pnlDetails1Layout.setHorizontalGroup(
+            pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDetails1Layout.createSequentialGroup()
+                        .addComponent(lblBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBirthdate, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                        .addGap(201, 201, 201))
+                    .addGroup(pnlDetails1Layout.createSequentialGroup()
+                        .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                                .addComponent(lblNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbNationality, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                                .addComponent(lblBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbCountry, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtEmail))
+                            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                                .addComponent(lblPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPhone))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDetails1Layout.createSequentialGroup()
+                                .addComponent(lblAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        pnlDetails1Layout.setVerticalGroup(
+            pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDetails1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhone)
+                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBirthdate)
+                    .addComponent(txtBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBirthplace)
+                    .addComponent(cbCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDetails1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNationality)
+                    .addComponent(cbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(388, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnlDetailsLayout = new javax.swing.GroupLayout(pnlDetails);
         pnlDetails.setLayout(pnlDetailsLayout);
         pnlDetailsLayout.setHorizontalGroup(
             pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 476, Short.MAX_VALUE)
+            .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlDetailsLayout.createSequentialGroup()
+                    .addComponent(pnlDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         pnlDetailsLayout.setVerticalGroup(
             pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlDetailsLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         tpUserInfo.addTab("Details", pnlDetails);
@@ -268,36 +423,60 @@ public class MainUser extends javax.swing.JFrame {
 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        try {
-//            String name = txtName.getText();
-//            String surName = txtSurname.getText();
-////            String profileDescription = txtAreaProfile.getText();
-//            String birthDate = txtBirthdate.getText();
-//            String email = txtEmail.getText();
-//            String phone = txtPhone.getText();
-//            String address = txtAddress.getText();
-//
-//            Country country = (Country) cbCountry.getSelectedItem();
-//            Country nationality = (Country) cbNationality.getSelectedItem();
-//            
-//            long l = sdf.parse(birthDate).getTime();
-//            Date bd = new Date(l);
-//            
-//            loggedInUser.setName(name);
-//            loggedInUser.setSurname(surName);
-////            loggedInUser.setProfileDesc(profileDescription);
-//            loggedInUser.setEmail(email);
-//            loggedInUser.setBirthDate(bd);
-//            loggedInUser.setPhone(phone);
-//            loggedInUser.setAddress(address);
-//            loggedInUser.setBirthPlace(country);
-//            loggedInUser.setNationality(nationality);
-//
-//            userDao.updateUser(loggedInUser);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        try {
+            String name = txtName.getText();
+            String surName = txtSurname.getText();
+//            String profileDescription = txtAreaProfile.getText();
+            String birthDate = txtBirthdate.getText();
+            String email = txtEmail.getText();
+            String phone = txtPhone.getText();
+            String address = txtAddress.getText();
+
+            Country country = (Country) cbCountry.getSelectedItem();
+            Country nationality = (Country) cbNationality.getSelectedItem();
+            
+            long l = sdf.parse(birthDate).getTime();
+            Date bd = new Date(l);
+            
+            loggedInUser.setName(name);
+            loggedInUser.setSurname(surName);
+//            loggedInUser.setProfileDesc(profileDescription);
+            loggedInUser.setEmail(email);
+            loggedInUser.setBirthDate(bd);
+            loggedInUser.setPhone(phone);
+            loggedInUser.setAddress(address);
+            loggedInUser.setBirthPlace(country);
+            loggedInUser.setNationality(nationality);
+
+            userDao.updateUser(loggedInUser);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtBirthdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBirthdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBirthdateActionPerformed
+
+    private void cbCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCountryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCountryActionPerformed
+
+    private void cbNationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNationalityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbNationalityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,9 +519,18 @@ public class MainUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Surname;
+    private javax.swing.JComboBox<Country> cbCountry;
+    private javax.swing.JComboBox<Country> cbNationality;
     private javax.swing.JButton jButton1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblBirthdate;
+    private javax.swing.JLabel lblBirthplace;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblNationality;
+    private javax.swing.JLabel lblPhone;
     private javax.swing.JPanel pnlDetails;
+    private javax.swing.JPanel pnlDetails1;
     private javax.swing.JPanel pnlHistory;
     private javax.swing.JPanel pnlProfile;
     private javax.swing.JPanel pnlSkills;
@@ -351,7 +539,11 @@ public class MainUser extends javax.swing.JFrame {
     private org.example.panel.SkillsPanel skillsPanel1;
     private org.example.panel.SkillsPanel skillsPanel2;
     private javax.swing.JTabbedPane tpUserInfo;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtBirthdate;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtSurname;
     // End of variables declaration//GEN-END:variables
 }
