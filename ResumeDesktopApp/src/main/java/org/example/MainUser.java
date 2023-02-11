@@ -6,7 +6,10 @@ package org.example;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import org.example.dao.inter.CountryDaoInter;
 import org.example.dao.inter.UserDaoInter;
+import org.example.entity.Country;
 import org.example.entity.User;
 import org.example.main.Context;
 
@@ -17,6 +20,7 @@ import org.example.main.Context;
 public class MainUser extends javax.swing.JFrame {
 
         private UserDaoInter userDao = Context.instanceUserDao();
+        private CountryDaoInter countryDao=Context.instanceCountryDao();
          User loggedInUser;
     
     /**
@@ -40,6 +44,18 @@ public class MainUser extends javax.swing.JFrame {
         txtBirthdate.setText(dtStr);
         txtEmail.setText(loggedInUser.getEmail());
         txtAddress.setText(loggedInUser.getAddress());
+        
+        List<Country> countries =countryDao.getAll();
+        for(Country c : countries){
+        cbCountry.addItem(c);
+        
+    }
+        cbCountry.addItem(new Country(1,  "Azerbaijan", "Azerbaijani"));
+        cbCountry.addItem(new Country(2, "USA", "American"));
+        
+        cbNationality.addItem(new Country(1, "Azerbaijani","Azerbaijan"));
+        cbNationality.addItem(new Country(2, "American", "USA"));
+        
         
     }
 
@@ -175,9 +191,12 @@ public class MainUser extends javax.swing.JFrame {
         lblNationality.setText("Nationality");
         lblNationality.setToolTipText("Enter your name");
 
-        cbCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Azeribaijan", "USA", "England" }));
+        cbCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbCountryActionPerformed(evt);
+            }
+        });
 
-        cbNationality.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Azerbaijani", "American", "English" }));
         cbNationality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbNationalityActionPerformed(evt);
@@ -192,11 +211,12 @@ public class MainUser extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDetailsLayout.createSequentialGroup()
-                        .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDetailsLayout.createSequentialGroup()
-                                .addComponent(lblBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtBirthdate))
+                        .addComponent(lblBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBirthdate, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addGap(201, 201, 201))
+                    .addGroup(pnlDetailsLayout.createSequentialGroup()
+                        .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(pnlDetailsLayout.createSequentialGroup()
                                 .addComponent(lblNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -204,10 +224,7 @@ public class MainUser extends javax.swing.JFrame {
                             .addGroup(pnlDetailsLayout.createSequentialGroup()
                                 .addComponent(lblBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbCountry, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(201, 201, 201))
-                    .addGroup(pnlDetailsLayout.createSequentialGroup()
-                        .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbCountry, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlDetailsLayout.createSequentialGroup()
                                 .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -363,6 +380,11 @@ public class MainUser extends javax.swing.JFrame {
       
      long l=sdf.parse(birthDate).getTime();
      Date bd=new Date(l);
+     
+     Country country =(Country) cbCountry.getSelectedItem();
+     Country nationality=(Country) cbNationality.getSelectedItem();
+     
+     
      loggedInUser.setName(name);
      loggedInUser.setSurname(surName);
      loggedInUser.setProfileDesc(profileDescription);
@@ -370,6 +392,8 @@ public class MainUser extends javax.swing.JFrame {
      loggedInUser.setBirthDate(bd);
      loggedInUser.setPhone(phone);
      loggedInUser.setAddress(address);
+     loggedInUser.setBirthPlace(country);
+     loggedInUser.setNationality(nationality);
      
      userDao.updateUser(loggedInUser);
       }catch(Exception ex){
@@ -396,6 +420,10 @@ public class MainUser extends javax.swing.JFrame {
     private void cbNationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNationalityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbNationalityActionPerformed
+
+    private void cbCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCountryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCountryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,8 +466,8 @@ public class MainUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Name;
     private javax.swing.JLabel Surname;
-    private javax.swing.JComboBox<String> cbCountry;
-    private javax.swing.JComboBox<String> cbNationality;
+    private javax.swing.JComboBox<Country> cbCountry;
+    private javax.swing.JComboBox<Country> cbNationality;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
