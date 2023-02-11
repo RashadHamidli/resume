@@ -2,21 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.example;
+package org.example.resume.panel;
+
+import org.example.resume.config.Config;
+import org.example.entity.User;
 
 /**
  *
  * @author mr_rashad
  */
-public class MainAdmin extends javax.swing.JPanel {
+public class ProfilePanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form MainAdmin
+     * Creates new form ProfilePanel
      */
-    public MainAdmin() {
+    public ProfilePanel() {
         initComponents();
     }
-
+public void fillUserComponents(){
+    txtAreaProfile.setText(Config.loggedInUser.getProfileDesc());
+    
+}
+public void fillUser(User user){
+    user.setProfileDesc(txtAreaProfile.getText());
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +36,11 @@ public class MainAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        txtAreaProfile = new javax.swing.JTextArea();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Rashad", "Hamidli", null, null}
-            },
-            new String [] {
-                "Name", "Surname", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        txtAreaProfile.setColumns(20);
+        txtAreaProfile.setRows(5);
+        jScrollPane1.setViewportView(txtAreaProfile);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -57,6 +60,6 @@ public class MainAdmin extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea txtAreaProfile;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,9 +26,7 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
     @Override
     public List<Country> getAll() {
         List<Country> list = new ArrayList<>();
-        Connection connection;
-        try {
-            connection = connect();
+        try(Connection connection=connect()){
             Statement stmt = connection.createStatement();
             stmt.execute("select * from country");
             ResultSet rs = stmt.getResultSet();
@@ -46,9 +44,7 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
     @Override
     public Country getById(int userId) {
         Country country = null;
-        Connection connection;
-        try {
-            connection = connect();
+        try(Connection connection=connect()){
             PreparedStatement stmt = connection.prepareStatement("select * from country where id=?");
             stmt.setInt(1, userId);
             stmt.execute();
@@ -64,10 +60,8 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
     }
 
     public boolean updateCountry(Country u) {
-        Connection connection;
         boolean b = true;
-        try {
-            connection = connect();
+       try(Connection connection=connect()){ 
             PreparedStatement stmt = connection.prepareStatement("update country set name=?, nationality=?, where id=?");
             stmt.setString(1, u.getName());
             stmt.setString(2, u.getNationality());
@@ -82,9 +76,7 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
 
     @Override
     public boolean removeCountry(int id) {
-        Connection connection;
-        try {
-            connection = connect();
+        try(Connection connection=connect()) {
             PreparedStatement stmt = connection.prepareStatement("delete from country where id=?");
             stmt.setInt(1, id);
             return stmt.execute();
@@ -92,7 +84,6 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
             ex.printStackTrace();
             return false;
         }
-
     }
 
 }

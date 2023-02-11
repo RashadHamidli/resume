@@ -2,11 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.example.panel;
+package org.example.resume.panel;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import org.example.resume.config.Config;
 import org.example.dao.inter.CountryDaoInter;
 import org.example.entity.Country;
+import org.example.entity.User;
 import org.example.main.Context;
 
 /**
@@ -17,9 +21,49 @@ public class DetailsPanel extends javax.swing.JPanel {
 
     private CountryDaoInter countryDao = Context.instanceCountryDao();
 
-    /**
-     * Creates new form DetailsPanel
-     */
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    public void fillUserComponents() {
+                fillWindow();
+        User loggedInUser = Config.loggedInUser;
+        txtPhone.setText(loggedInUser.getPhone());
+        Date dt = loggedInUser.getBirthDate();
+        String dtStr = sdf.format(dt);
+        txtBirthdate.setText(dtStr);
+        txtEmail.setText(loggedInUser.getEmail());
+        txtAddress.setText(loggedInUser.getAddress());
+        cbCountry.setSelectedItem(loggedInUser.getBirthPlace());
+        cbNationality.setSelectedItem(loggedInUser.getNationality());
+
+    }
+
+    public void fillUser(User user) {
+        try {
+            String birthDate = txtBirthdate.getText();
+            String email = txtEmail.getText();
+            String phone = txtPhone.getText();
+            String address = txtAddress.getText();
+
+            Country country = (Country) cbCountry.getSelectedItem();
+            Country nationality = (Country) cbNationality.getSelectedItem();
+
+            long l = sdf.parse(birthDate).getTime();
+            Date bd = new Date(l);
+            user.setBirthDate(bd);
+            user.setEmail(email);
+            user.setPhone(phone);
+            user.setAddress(address);
+            user.setBirthPlace((Country) cbCountry.getSelectedItem());
+            user.setNationality((Country) cbNationality.getSelectedItem());
+            
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+        /**
+         * Creates new form DetailsPanel
+         */
     public DetailsPanel() {
         initComponents();
     }

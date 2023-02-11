@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package org.example.panel;
+package org.example.resume.main;
 
 /**
  *
  * @author mr_rashad
  */
-public class ProfilePanel extends javax.swing.JPanel {
+public class MainAdmin extends javax.swing.JPanel {
 
     /**
-     * Creates new form ProfilePanel
+     * Creates new form MainAdmin
      */
-    public ProfilePanel() {
+    public MainAdmin() {
         initComponents();
     }
 
@@ -27,11 +27,17 @@ public class ProfilePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaProfile = new javax.swing.JTextArea();
+        jTable1 = new javax.swing.JTable();
 
-        txtAreaProfile.setColumns(20);
-        txtAreaProfile.setRows(5);
-        jScrollPane1.setViewportView(txtAreaProfile);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Rashad", "Hamidli", null, null}
+            },
+            new String [] {
+                "Name", "Surname", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,6 +57,6 @@ public class ProfilePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtAreaProfile;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
