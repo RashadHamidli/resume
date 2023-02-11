@@ -4,7 +4,9 @@
  */
 package org.example.resume.panel;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import org.example.dao.inter.SkillDaoInter;
 import org.example.dao.inter.UserSkillDaoInter;
@@ -38,16 +40,31 @@ public class SkillsPanel extends javax.swing.JPanel {
         fillTable();
     }
 
-    private void fillTable(){
-        User user=Config.loggedInUser;
-        int id= user.getId();
-        List<UserSkill> list =userSkillDao.getAllSkillByUserId(id);
-        DefaultTableModel model= new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Skill", "Power"});
-        
+    private List<UserSkill> list;
+
+    private void fillTable() {
+        User user = Config.loggedInUser;
+        int id = user.getId();
+        list = userSkillDao.getAllSkillByUserId(id);
+
+        Vector<Vector> rows = new Vector<>();
+        for (UserSkill l : list) {
+            Vector row = new Vector();
+            row.add(l.getSkill());
+            row.add(l.getPower());
+            rows.add(row);
+        }
+
+        Vector<String> columns = new Vector<>();
+        columns.add("Skill");
+        columns.add("Power");
+
+        DefaultTableModel model = new DefaultTableModel(rows, columns);
+
         tblSkills.setModel(model);
-        
+
     }
+
     public void fillUserComponents() {
         fillWindow();
     }
@@ -186,11 +203,26 @@ public class SkillsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbSkillActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        String skillName = txtSkillName.getText();
+        Skill skill =null;
+        if (skillName != null && !skillName.trim().isEmpty()) {
+            skill=new Skill(0, skillName);
+            skillDao.insertSkill(skill);
+        }else {
+            skill=(Skill)cbSkill.getSelectedItem();
+        }
+
+        int power = sliderPower.getValue();
+        UserSkill userSkill = new UserSkill(null, Config.loggedInUser, skill, power);
+        userSkillDao.insertUserSkill(userSkill);
+        fillTable();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        int index = tblSkills.getSelectedRow();
+        UserSkill skill=list.get(index);
+        userSkillDao.removeUser(skill.getId());
+        fillTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 

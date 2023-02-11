@@ -10,7 +10,6 @@ import org.example.dao.inter.SkillDaoInter;
 import org.example.entity.Skill;
 
 import java.util.List;
-import org.example.entity.Country;
 
 public class SkillDaoImpl extends AbstractDAO implements SkillDaoInter {
 
@@ -110,6 +109,20 @@ public class SkillDaoImpl extends AbstractDAO implements SkillDaoInter {
 
     @Override
     public boolean insertSkill(Skill skl) {
-        return true;
+        boolean b = true;
+        try ( Connection connection = connect()) {
+            PreparedStatement stmt = connection.prepareStatement("insert skill (name) values (?)", Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, skl.getName());
+            b = stmt.execute();
+
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                skl.setId(generatedKeys.getInt(1));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            b= false;
+        }
+        return b;
     }
 }
