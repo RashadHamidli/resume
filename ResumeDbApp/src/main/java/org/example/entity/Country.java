@@ -5,6 +5,14 @@ public class Country {
     private String name;
     private String nationality;
 
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
     public Country() {
     }
 
@@ -36,6 +44,28 @@ public class Country {
 
     public void setCountryName(String nationality) {
         this.nationality = nationality;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Country other = (Country) obj;
+        return this.id == other.id;
     }
 
     @Override

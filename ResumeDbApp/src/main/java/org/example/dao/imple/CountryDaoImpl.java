@@ -20,7 +20,6 @@ public class CountryDaoImpl extends AbstractDAO implements CountryDaoInter {
         String nationality = rs.getString("nationality");
 
         Country country = new Country(id, name, nationality);
-        System.out.println(country);
         return country;
     }
 

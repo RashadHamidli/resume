@@ -10,17 +10,20 @@ import org.example.dao.inter.UserDaoInter;
 import org.example.dao.inter.UserSkillDaoInter;
 
 public class Context {
-    public static UserDaoInter instanceUserDao(){
+
+    public static UserDaoInter instanceUserDao() {
         return new UserDaoImpl();
     }
-    public static UserSkillDaoInter instanceUserSkillDao(){
+
+    public static UserSkillDaoInter instanceUserSkillDao() {
         return new UserSkillDaoImpl();
     }
-    public static EmploymentHistoryDaoInter instanceEmploymentHistoryDao(){
+
+    public static EmploymentHistoryDaoInter instanceEmploymentHistoryDao() {
         return new EmploymentHistoryDaoImpl();
     }
-    
-    public static CountryDaoInter instanceCountryDao(){
+
+    public static CountryDaoInter instanceCountryDao() {
         return new CountryDaoImpl();
     }
 }

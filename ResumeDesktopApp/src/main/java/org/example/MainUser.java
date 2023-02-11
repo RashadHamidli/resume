@@ -22,6 +22,7 @@ public class MainUser extends javax.swing.JFrame {
     private UserDaoInter userDao = Context.instanceUserDao();
     private CountryDaoInter countryDao = Context.instanceCountryDao();
     User loggedInUser;
+    
 
     /**
      * Creates new form Main1
@@ -29,6 +30,7 @@ public class MainUser extends javax.swing.JFrame {
     public MainUser() {
         initComponents();
         loggedInUser = userDao.getById(8);
+        fillWindow();
         fillUserComponents();
     }
 
@@ -38,6 +40,7 @@ public class MainUser extends javax.swing.JFrame {
         List<Country> countries = countryDao.getAll();
         for (Country c : countries) {
             cbCountry.addItem(c);
+            cbNationality.addItem(c);
         }
     }
 
@@ -52,11 +55,7 @@ public class MainUser extends javax.swing.JFrame {
         txtEmail.setText(loggedInUser.getEmail());
         txtAddress.setText(loggedInUser.getAddress());
         cbCountry.setSelectedItem(loggedInUser.getBirthPlace());
-        
-        
-
-        
-      
+        cbNationality.setSelectedItem(loggedInUser.getNationality());
 
     }
 
@@ -378,12 +377,12 @@ public class MainUser extends javax.swing.JFrame {
             String phone = txtPhone.getText();
             String address = txtAddress.getText();
 
-            long l = sdf.parse(birthDate).getTime();
-            Date bd = new Date(l);
-
             Country country = (Country) cbCountry.getSelectedItem();
             Country nationality = (Country) cbNationality.getSelectedItem();
-
+            
+            long l = sdf.parse(birthDate).getTime();
+            Date bd = new Date(l);
+            
             loggedInUser.setName(name);
             loggedInUser.setSurname(surName);
             loggedInUser.setProfileDesc(profileDescription);

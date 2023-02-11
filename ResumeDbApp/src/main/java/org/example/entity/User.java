@@ -13,7 +13,7 @@ public class User {
     private String profileDesc;
     private Date birthDate;
     private  Country nationality;
-    private  Country birthplace;
+    private  Country birthPlace;
     private String address;
     private List<UserSkill> skills;
 
@@ -32,10 +32,16 @@ public class User {
         this.email = email;
         this.birthDate = birthdate;
         this.nationality = nationality;
-        this.birthplace = birthPlace;
+        this.birthPlace = birthPlace;
         this.profileDesc=profileDesc;
         this.address=address;
     }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", phone=" + phone + ", email=" + email + ", profileDesc=" + profileDesc + ", birthDate=" + birthDate + ", nationality=" + nationality + ", birthplace=" + birthPlace + ", address=" + address + ", skills=" + skills + '}';
+    }
+
 
 
 
@@ -79,12 +85,13 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", phone=" + phone + ", email=" + email + ", profileDesc=" + profileDesc + ", birthDate=" + birthDate + ", nationality=" + nationality + ", birthplace=" + birthplace + ", skills=" + skills + '}';
+    public String getProfileDesc() {
+        return profileDesc;
     }
 
-   
+    public void setProfileDesc(String profileDesc) {
+        this.profileDesc = profileDesc;
+    }
 
     public Date getBirthDate() {
         return birthDate;
@@ -103,35 +110,11 @@ public class User {
     }
 
     public Country getBirthPlace() {
-        return birthplace;
+        return birthPlace;
     }
 
     public void setBirthPlace(Country birthPlace) {
-        this.birthplace = birthPlace;
-    }
-
-    public Country getBirthplace() {
-        return birthplace;
-    }
-
-    public void setBirthplace(Country birthplace) {
-        this.birthplace = birthplace;
-    }
-
-    public List<UserSkill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<UserSkill> skills) {
-        this.skills = skills;
-    }
-
-    public String getProfileDesc() {
-        return profileDesc;
-    }
-
-    public void setProfileDesc(String profileDesc) {
-        this.profileDesc = profileDesc;
+        this.birthPlace = birthPlace;
     }
 
     public String getAddress() {
@@ -140,6 +123,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<UserSkill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<UserSkill> skills) {
+        this.skills = skills;
     }
     
     
