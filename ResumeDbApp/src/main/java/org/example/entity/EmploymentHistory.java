@@ -4,7 +4,8 @@ import java.util.Date;
 
 public class EmploymentHistory {
     private Integer id;
-    private String header;
+    private String companyName;
+    private String position;
     private Date beingDate;
     private Date endDate;
     private String jobDescription;
@@ -13,9 +14,10 @@ public class EmploymentHistory {
     public EmploymentHistory() {
     }
 
-    public EmploymentHistory(Integer id, String header, Date beingDate, Date endDate, String jobDescription, User user) {
+    public EmploymentHistory(Integer id, String companyName, String position, Date beingDate, Date endDate, String jobDescription, User user) {
         this.id = id;
-        this.header = header;
+        this.companyName = companyName;
+        this.position = position;
         this.beingDate = beingDate;
         this.endDate = endDate;
         this.jobDescription = jobDescription;
@@ -30,12 +32,20 @@ public class EmploymentHistory {
         this.id = id;
     }
 
-    public String getHeader() {
-        return header;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setHeader(String header) {
-        this.header = header;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public Date getBeingDate() {
@@ -72,13 +82,12 @@ public class EmploymentHistory {
 
     @Override
     public String toString() {
-        return "EmploymentHistory{" +
-                "id=" + id +
-                ", header='" + header + '\'' +
-                ", beingDate=" + beingDate +
-                ", endDate=" + endDate +
-                ", jobDescription='" + jobDescription + '\'' +
-                ", user=" + user +
-                '}';
+        return "EmploymentHistory{" + "id=" + id + ", companyName=" + companyName + ", position=" + position + ", beingDate=" + beingDate + ", endDate=" + endDate + ", jobDescription=" + jobDescription + ", user=" + user + '}';
     }
+
+    
+
+   
+
+   
 }

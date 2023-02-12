@@ -32,5 +32,6 @@ public class Context {
     public static SkillDaoInter instanceSkillDao() {
         return new SkillDaoImpl();
     }
+
     
 }
