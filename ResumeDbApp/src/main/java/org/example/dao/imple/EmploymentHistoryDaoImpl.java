@@ -16,7 +16,7 @@ import org.example.entity.UserSkill;
 public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentHistoryDaoInter {
 
     private EmploymentHistory getEmploymentHistory(ResultSet rs) throws Exception {
-        int historyId = rs.getInt("history_id");
+        int historyId = rs.getInt("id");
         String companyName=rs.getString("company_name");
         String position = rs.getString("position");
         String jobDescription =rs.getString("job_description");
@@ -29,12 +29,12 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
     }
 
     @Override
-    public List<EmploymentHistory> getAllEmploymentHistoryByUserId(int userId) {
+    public List<EmploymentHistory> getAllEmploymentHistoryByUserId(int id) {
         List<EmploymentHistory> result = new ArrayList<>();
         try (Connection c = connect()) {
 
             PreparedStatement stmt = c.prepareStatement("select * from employment_history where user_id=?");
-            stmt.setInt(1, userId);
+            stmt.setInt(1, id);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
@@ -50,7 +50,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
     public boolean insertEmploymentHistory(EmploymentHistory u) {
         boolean b = true;
         try ( Connection c = connect()) {
-            PreparedStatement stmt = c.prepareStatement("insert into employment_history (company_name , position , begin_date , end_date , job_description, user_id) values (?,?,?,?,?,?) ");
+            PreparedStatement stmt = c.prepareStatement("update employment_history set company_name=?, position=?, begin_date=?, end_date=?, job_description=? user_id=?,  where id=?");
             stmt.setString(1, u.getCompanyName());
             stmt.setString(2, u.getPosition());
             stmt.setDate(3, (java.sql.Date) u.getBeingDate());
@@ -58,6 +58,8 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
             stmt.setString(5, u.getJobDescription());
             stmt.setInt(6, u.getUser().getId());
             b = stmt.execute();
+            
+//insert into employment_history (company_name , position , begin_date , end_date , job_description, user_id) values (?,?,?,?,?,?) 
 
         } catch (Exception ex) {
             ex.printStackTrace();

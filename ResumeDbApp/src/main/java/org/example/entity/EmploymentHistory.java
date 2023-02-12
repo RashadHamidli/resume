@@ -13,6 +13,8 @@ public class EmploymentHistory {
 
     public EmploymentHistory() {
     }
+    
+    
 
     public EmploymentHistory(Integer id, String companyName, String position, Date beingDate, Date endDate, String jobDescription, User user) {
         this.id = id;
@@ -22,6 +24,14 @@ public class EmploymentHistory {
         this.endDate = endDate;
         this.jobDescription = jobDescription;
         this.user = user;
+    }
+
+    public EmploymentHistory(String companyName, String position, Date beingDate, Date endDate, String jobDescription) {
+        this.companyName = companyName;
+        this.position = position;
+        this.beingDate = beingDate;
+        this.endDate = endDate;
+        this.jobDescription = jobDescription;
     }
 
     public Integer getId() {

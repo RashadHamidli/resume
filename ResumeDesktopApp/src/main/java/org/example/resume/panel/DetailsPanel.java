@@ -24,7 +24,7 @@ public class DetailsPanel extends javax.swing.JPanel {
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     public void fillUserComponents() {
-                fillWindow();
+        fillWindow();
         User loggedInUser = Config.loggedInUser;
         txtPhone.setText(loggedInUser.getPhone());
         Date dt = loggedInUser.getBirthDate();

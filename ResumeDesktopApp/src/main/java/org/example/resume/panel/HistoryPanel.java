@@ -4,11 +4,24 @@
  */
 package org.example.resume.panel;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import org.example.dao.inter.EmploymentHistoryDaoInter;
+import org.example.entity.EmploymentHistory;
+import org.example.entity.User;
+import org.example.main.Context;
+import org.example.resume.config.Config;
+
 /**
  *
  * @author mr_rashad
  */
 public class HistoryPanel extends javax.swing.JPanel {
+
+    private EmploymentHistoryDaoInter employmentDao = Context.instanceEmploymentHistoryDao();
 
     /**
      * Creates new form HistoryPanel
@@ -16,7 +29,41 @@ public class HistoryPanel extends javax.swing.JPanel {
     public HistoryPanel() {
         initComponents();
     }
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
     public void fillUserComponents() {
+
+        fillTable();
+    }
+    private List<EmploymentHistory> list;
+
+    private void fillTable() {
+        User user = Config.loggedInUser;
+        int id = user.getId();
+        list = employmentDao.getAllEmploymentHistoryByUserId(id);
+
+        Vector<Vector> rows = new Vector<>();
+        for (EmploymentHistory l : list) {
+            Vector<Object> row = new Vector<>();
+            row.add(l.getCompanyName());
+            row.add(l.getPosition());
+            row.add(l.getBeingDate());
+            row.add(l.getEndDate());
+            row.add(l.getJobDescription());
+            rows.add(row);
+        }
+
+        Vector<String> columns = new Vector<>();
+        columns.add("Company");
+        columns.add("Position");
+        columns.add("Begin Data");
+        columns.add("End Data");
+        columns.add("Job Description");
+
+        DefaultTableModel model = new DefaultTableModel(rows, columns);
+
+        tblHistory.setModel(model);
+
     }
 
     /**
@@ -42,7 +89,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHistory = new javax.swing.JTable();
 
         lblCompany.setText("Company");
 
@@ -82,7 +129,7 @@ public class HistoryPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtPosition))
+                        .addComponent(txtPosition, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblBeginDate, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -90,11 +137,11 @@ public class HistoryPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                        .addComponent(txtEndDate))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAdd)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemove)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +175,7 @@ public class HistoryPanel extends javax.swing.JPanel {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -139,7 +186,7 @@ public class HistoryPanel extends javax.swing.JPanel {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblHistory);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -161,11 +208,34 @@ public class HistoryPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        try {
+            String company = txtCompany.getText();
+            String position = txtPosition.getText();
+
+            String beginDate = txtBeginDate.getText();
+            long l = sdf.parse(beginDate).getTime();
+            Date begin = new Date(l);
+
+            String endDate = txtEndDate.getText();
+            long l2 = sdf.parse(endDate).getTime();
+            Date end = new Date(l2);
+
+            String description = txtDescription.getText();
+            EmploymentHistory eh = new EmploymentHistory(company, position, begin, end, description);
+
+            employmentDao.insertEmploymentHistory(eh);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        fillTable();
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        // TODO add your handling code here:
+//        int index = tblSkills.getSelectedRow();
+//        UserSkill userSkill = list.get(index);
+//        userSkillDao.removeUser(userSkill.getId());
+//        fillTable();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
 
@@ -174,12 +244,12 @@ public class HistoryPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRemove;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBeginDate;
     private javax.swing.JLabel lblCompany;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblEndDate;
     private javax.swing.JLabel lblPosition;
+    private javax.swing.JTable tblHistory;
     private javax.swing.JTextField txtBeginDate;
     private javax.swing.JTextField txtCompany;
     private javax.swing.JTextField txtDescription;
