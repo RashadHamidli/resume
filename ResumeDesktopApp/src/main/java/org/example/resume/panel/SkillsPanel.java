@@ -49,7 +49,7 @@ public class SkillsPanel extends javax.swing.JPanel {
 
         Vector<Vector> rows = new Vector<>();
         for (UserSkill l : list) {
-            Vector row = new Vector();
+            Vector<Object> row = new Vector<>();
             row.add(l.getSkill());
             row.add(l.getPower());
             rows.add(row);

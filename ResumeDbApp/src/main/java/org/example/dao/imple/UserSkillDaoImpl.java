@@ -21,44 +21,46 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
         String skillName = rs.getString("skill_name");
         int power = rs.getInt("power");
 
-        return new UserSkill(userSkillId, new User(userId), new Skill(skillId, skillName), power);
-
+        UserSkill us = new UserSkill(userSkillId, new User(userId), new Skill(skillId, skillName), power);
+        return us;
     }
 
     @Override
-    public List<UserSkill> getAllSkillByUserId(int userId) {
-        List<UserSkill> result = new ArrayList<>();
+    public List<UserSkill> getAllSkillByUserId(int id) {
+        List<UserSkill> list = new ArrayList<>();
         try ( Connection c = connect()) {
 
             PreparedStatement stmt = c.prepareStatement("SELECT "
                     + " us.id AS userSkillId, "
-                    + " u.*,"
-                    + " us.skill_id, s.NAME AS skill_name ,"
+                    + " u.*, "
+                    + " us.skill_id, s.NAME AS Skill_name , "
                     + " us.power "
                     + " FROM "
                     + " user_skill us "
                     + " LEFT JOIN USER u ON us.user_id = u.id "
                     + " LEFT JOIN skill s ON us.skill_id = s.id "
                     + " WHERE us.user_id=? ");
-            stmt.setInt(1, userId);
+            stmt.setInt(1, id);
             stmt.execute();
+            
             ResultSet rs = stmt.getResultSet();
+            
             while (rs.next()) {
-                UserSkill u = getUserSkill(rs);
-                result.add(u);
+                UserSkill us = getUserSkill(rs);
+                list.add(us);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return result;
+        return list;
     }
 
     @Override
     public boolean insertUserSkill(UserSkill u) {
         boolean b = true;
         try ( Connection c = connect()) {
-            PreparedStatement stmt = c.prepareStatement("insert into user_skill (skill_id, user_id, power) values (?,?,?) ");
-            stmt.setInt(1, u.getUser().getId());
+            PreparedStatement stmt = c.prepareStatement("insert into user_skill (skill_id , user_id , power) values (?,?,?) ");
+            stmt.setInt(1, u.getSkill().getId());
             stmt.setInt(2, u.getUser().getId());
             stmt.setInt(3, u.getPower());
             b = stmt.execute();
