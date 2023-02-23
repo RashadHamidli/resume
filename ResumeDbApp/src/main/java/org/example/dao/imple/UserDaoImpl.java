@@ -1,9 +1,7 @@
 package org.example.dao.imple;
 
 import org.example.entity.Country;
-import org.example.entity.Skill;
 import org.example.entity.User;
-import org.example.entity.UserSkill;
 import org.example.dao.inter.AbstractDAO;
 import org.example.dao.inter.UserDaoInter;
 
@@ -33,6 +31,8 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
 
         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
     }
+   
+    
 
 
     @Override

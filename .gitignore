@@ -23,3 +23,12 @@
 hs_err_pid*
 /ResumeDbApp/target/
 /ResumeDesktopApp/target/
+/ResumeWebApp/target/
+/mavenproject1/target/
+/WebApplication1/nbproject/private/
+/WebApplication1/dist/
+/WebApplication1/build/
+/mavenproject2/target/
+/WebApplication/nbproject/private/
+/WebApplication/build/
+/WebApplication/dist/

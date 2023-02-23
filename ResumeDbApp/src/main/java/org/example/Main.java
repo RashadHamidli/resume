@@ -7,11 +7,11 @@ import org.example.dao.inter.UserSkillDaoInter;
 import org.example.main.Context;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
-        EmploymentHistoryDaoInter dao =Context.instanceEmploymentHistoryDao();
-        System.out.println(dao.getAllEmploymentHistoryByUserId(8));
 
+        UserDaoInter dao = Context.instanceUserDao();
+        System.out.println(dao.getAll());
     }
-
 
 }

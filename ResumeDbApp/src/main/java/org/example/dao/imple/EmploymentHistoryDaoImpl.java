@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.example.entity.UserSkill;
 
 public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentHistoryDaoInter {
 
@@ -35,6 +34,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
 
             PreparedStatement stmt = c.prepareStatement("select * from employment_history where user_id=?");
             stmt.setInt(1, id);
+            
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
