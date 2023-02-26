@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @WebServlet(name = "UserController", value = "/UserController")
 public class UserController extends HttpServlet {
-
     private UserDaoInter userDao = Context.instanceUserDao();
 
     @Override

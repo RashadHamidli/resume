@@ -1,6 +1,7 @@
 <%@ page import="org.example.dao.inter.UserDaoInter" %>
 <%@ page import="org.example.main.Context" %>
-<%@ page import="org.example.entity.User" %><%--
+<%@ page import="org.example.entity.User" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: mr_rashad
   Date: 25.02.2023
@@ -16,26 +17,50 @@
 <body>
 <%
     UserDaoInter userDao = Context.instanceUserDao();
-    User u = userDao.getById(8);
+    List<User> list = userDao.getAll();
 %>
 <div>
-    <form action="UserController" method="POST">
-        <input type="hidden" name="id" value="<%=u.getId()%>"/>
-    <label>name:</label>
-    <input type="text" name="name" value="<%=u.getName()%>"/>
-    <br/>
-    <label>surname:</label>
-    <input type="text" name="surname" value="<%=u.getSurname()%>"/>
-    <input type="submit" name="Save" value="Save" >
+    <form action="user.jsp" method="POST">
+        <input type="hidden" name="id" value=""/>
+        <label>name:</label>
+        <input type="text" name="name" value=""/>
         <br/>
+        <label>surname:</label>
+        <input type="text" name="surname" value=""/>
+        <input type="submit" name="search" value="Search">
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>name</th>
+                    <th>surname</th>
+                    <th>nationality</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    for (User u : list) {
+                %>
+                <tr>
+                    <td><%=u.getName()%></td>
+                    <td><%=u.getSurname()%></td>
+                    <td><%=u.getNationality().getName()==null?"N/A":u.getNationality().getName()%></td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+
+        </div>
+
+
         <label>address:</label>
-        <input type="text" name="address" value="<%=u.getAddress()%>"/>
+        <input type="text" name="address" value=""/>
         <br/>
         <label>phone:</label>
-        <input type="text" name="phone" value="<%=u.getPhone()%>"/>
+        <input type="text" name="phone" value=""/>
         <br/>
         <label>email:</label>
-        <input type="text" name="email" value="<%=u.getEmail()%>"/>
+        <input type="text" name="email" value=""/>
     </form>
 
 </div>
