@@ -37,7 +37,7 @@
         <label>email:</label>
         <input type="text" name="email" value="<%=u.getEmail()%>"/>
     </form>
-    
+
 </div>
 </body>
 </html>
