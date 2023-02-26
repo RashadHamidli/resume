@@ -8,11 +8,7 @@ import org.example.entity.User;
 import org.example.main.Context;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @WebServlet(name = "UserController", value = "/UserController")
 public class UserController extends HttpServlet {
