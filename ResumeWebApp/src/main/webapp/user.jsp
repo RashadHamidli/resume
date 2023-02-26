@@ -27,7 +27,17 @@
     <label>surname:</label>
     <input type="text" name="surname" value="<%=u.getSurname()%>"/>
     <input type="submit" name="Save" value="Save" >
+        <br/>
+        <label>address:</label>
+        <input type="text" name="address" value="<%=u.getAddress()%>"/>
+        <br/>
+        <label>phone:</label>
+        <input type="text" name="phone" value="<%=u.getPhone()%>"/>
+        <br/>
+        <label>email:</label>
+        <input type="text" name="email" value="<%=u.getEmail()%>"/>
     </form>
+    
 </div>
 </body>
 </html>
