@@ -32,3 +32,8 @@ hs_err_pid*
 /WebApplication/nbproject/private/
 /WebApplication/build/
 /WebApplication/dist/
+/WebApp/target/
+/ResumeWebAppDB/target/
+/test/target/
+/TomcatBasicDemo/target/
+/TomcatBasicDemo2/target/
