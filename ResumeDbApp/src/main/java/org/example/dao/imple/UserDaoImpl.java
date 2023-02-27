@@ -18,36 +18,56 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         String surname = rs.getString("surname");
         String phone = rs.getString("phone");
         String email = rs.getString("email");
-        String profileDesc=rs.getString("profile_description");
+        String profileDesc = rs.getString("profile_description");
         int nationalityId = rs.getInt("nationality_id");
         int birthplaceId = rs.getInt("birthplace_id");
         String nationalityStr = rs.getString("nationality");
         String birthPlaceStr = rs.getString("birthplace");
         Date birthdate = rs.getDate("birthdate");
-        String address=rs.getString("address");
+        String address = rs.getString("address");
 
         Country nationality = new Country(nationalityId, null, nationalityStr);
         Country birthplace = new Country(birthplaceId, birthPlaceStr, null);
 
         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
     }
-   
-    
 
 
     @Override
-    public List<User> getAll() {
+    public List<User> getAll(String name, String surname, Integer nationalityId) {
         List<User> result = new ArrayList<>();
         try (Connection c = connect()) {
-
-            Statement stmt = c.createStatement();
-            stmt.execute("select \n" +
-                    "\tu.*,\n" +
-                    "\tc.name as birthplace, \n" +
-                    "\tn.nationality \n" +
-                    "from user u\n" +
-                    "left join country n on u.nationality_id=n.id\n" +
-                    "left join country c on u.birthplace_id=c.id");
+            String sql = " select "
+                    + " u.*, "
+                    + " c.name as birthplace, "
+                    + " n.nationality  "
+                    + " from user u "
+                    + " left join country n on u.nationality_id=n.id "
+                    + " left join country c on u.birthplace_id=c.id where 1=1 ";
+            if(name!=null && name.trim().isEmpty()){
+                sql+=" and name=? ";
+            }
+            if(surname!=null && surname.trim().isEmpty()){
+                sql+=" and surname=? ";
+            }
+            if(nationalityId!=null ){
+                sql+=" and nationality_id=? ";
+            }
+            PreparedStatement stmt = c.prepareStatement(sql);
+            int i=1;
+            if(name!=null && name.trim().isEmpty()){
+                stmt.setString(i, name);
+                i++;
+            }
+            if(surname!=null && surname.trim().isEmpty()){
+                stmt.setString(i, surname);
+                i++;
+            }
+            if(nationalityId!=null){
+                stmt.setInt(i, nationalityId);
+                i++;
+            }
+            stmt.execute();
             ResultSet rs = stmt.getResultSet();
 
             while (rs.next()) {
@@ -74,7 +94,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             stmt.setInt(8, u.getBirthPlace().getId());
             stmt.setInt(9, u.getNationality().getId());
             stmt.setInt(10, u.getId());
-            
+
             stmt.execute();
             return stmt.execute();
         } catch (Exception ex) {
@@ -93,8 +113,6 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             return false;
         }
     }
-
-
 
 
     @Override
@@ -125,7 +143,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
     @Override
     public boolean addUser(User u) {
         try (Connection c = connect()) {
-            PreparedStatement stmt = c.prepareStatement("insert into user(name, surname, phone, email, profile_description) values(?,?,?,?)");
+            PreparedStatement stmt = c.prepareStatement("insert into user(name, surname, phone, email, profile_description) values(?,?,?,?,?)");
             stmt.setString(1, u.getName());
             stmt.setString(2, u.getSurname());
             stmt.setString(3, u.getPhone());

@@ -5,7 +5,7 @@
          version="5.0">
     <servlet>
         <servlet-name>UserController</servlet-name>
-        <servlet-class>com.example.resumewebapp.UserController</servlet-class>
+        <servlet-class>com.example.resume.UserController</servlet-class>
     </servlet>
 
     <servlet-mapping>

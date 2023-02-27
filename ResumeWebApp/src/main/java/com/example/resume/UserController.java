@@ -1,4 +1,4 @@
-package com.example.resumewebapp;
+package com.example.resume;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -36,7 +36,7 @@ public class UserController extends HttpServlet {
         user.setPhone(phone);
         user.setEmail(email);
         userDao.updateUser(user);
-        response.sendRedirect("user.jsp");
+        response.sendRedirect("users.jsp");
 
     }
 }
