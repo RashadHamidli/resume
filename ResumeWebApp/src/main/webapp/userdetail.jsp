@@ -20,7 +20,7 @@
 
 
 <div>
-    <form action="/UserController" method="POST">
+    <form action="/userdetail" method="POST">
         <input type="hidden" name="id" value="<%=u.getId()%>"/>
         <label for="name">name:</label>
         <input type="text" name="name" value="<%=u.getName()%>"/>

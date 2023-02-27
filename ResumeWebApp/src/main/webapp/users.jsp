@@ -47,40 +47,55 @@
         </div>
 
     </div>
-        <div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>name</th>
-                    <th>surname</th>
-                    <th>nationality</th>
-                    <th>operations</th>
-                </tr>
-                </thead>
-                <tbody>
-                <%
-                    for (User u : list) {
-                %>
-                <tr>
-                    <td><%=u.getName()%></td>
-                    <td><%=u.getSurname()%></td>
-                    <td><%=u.getNationality().getName() == null ? "N/A" : u.getNationality().getName()%></td>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>surname</th>
+                <th>nationality</th>
+                <th>operations</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                for (User u : list) {
+            %>
+            <tr>
+                <td><%=u.getName()%>
+                </td>
+                <td><%=u.getSurname()%>
+                </td>
+                <td><%=u.getNationality().getName() == null ? "N/A" : u.getNationality().getName()%>
+                </td>
 
-                    <td>
-                        <button class="btn btn-danger btn_table" type="submit" value="delete" name="actions">
+                <td style="width: 5px">
+                    <form action="userdetail" method="POST">
+                        <input type="hidden" name="id" value="<%=u.getId()%>">
+                        <input type="hidden" name="action" value="delete">
+                        <button class="btn btn-danger btn_table" type="submit" value="delete">
                             <span class="btn_table material-symbols-outlined">delete</span>
                         </button>
-                        <button class="btn btn-secondary btn_table" type="submit" value="delete" name="actions">
+                    </form>
+
+                </td>
+                <td>
+                    <form action="userdetail" method="GET">
+                        <input type="hidden" name="id" value="<%=u.getId()%>">
+                        <input type="hidden" name="action" value="update">
+                        <button class="btn btn-secondary btn_table" type="submit" value="update">
                             <span class="material-symbols-outlined">update</span>
                         </button>
-                    </td>
-
-                </tr>
-                <%}%>
-                </tbody>
-            </table>
-        </div>
+                    </form>
+                </td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
     </div>
+</div>
 </div>
 
 </body>

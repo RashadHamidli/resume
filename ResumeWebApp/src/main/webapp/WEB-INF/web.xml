@@ -7,9 +7,16 @@
         <servlet-name>UserController</servlet-name>
         <servlet-class>com.example.resume.UserController</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>UserDetailController</servlet-name>
+        <servlet-class>com.example.resume.UserDetailController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDetailController</servlet-name>
         <url-pattern>/userdetail</url-pattern>
     </servlet-mapping>
 </web-app>
