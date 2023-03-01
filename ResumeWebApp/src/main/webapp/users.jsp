@@ -12,6 +12,7 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="assets/js/users.js"></script>
     <title>JSP page</title>
     <script>
         function writeWhatIamTyping() {
@@ -25,6 +26,7 @@
             var btnsearch=document.getElementById("btnsearch");
             btnsearch.style="background: red";
         }
+
 
     </script>
 </head>
@@ -62,7 +64,7 @@
                     <input placeholder="Enter surname" class="form-control" type="text" name="surname" value=""/>
                 </div>
                 <input class="btn btn-primary" type="submit" name="search" value="Search" id="btnsearch">
-                <input class="btn btn-primary" type="submit" name="search" value="Change color"/>
+                <input class="btn btn-primary" type="button" name="search" value="Show hide" onclick="showHide()"/>
             </form>
         </div>
 

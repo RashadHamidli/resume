@@ -9,3 +9,7 @@ function changeColor() {
     var btnsearch=document.getElementById("btnsearch");
     btnsearch.style="background: red";
 }
+function showHide(){
+    var btnsearch=document.getElementById("btnsearch");
+    btnsearch.style="display: none";
+}
