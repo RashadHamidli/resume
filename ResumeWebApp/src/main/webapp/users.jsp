@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>JSP page</title>
+    <script>
+        function writeWhatIamTyping() {
+            var input =document.getElementById("whatIamtyping");
+            var text=document.getElementById("typeing");
+
+            var inputStr=input.value;
+            text.innerHTML=inputStr;
+        }
+        function changeColor() {
+            var btnsearch=document.getElementById("btnsearch");
+            btnsearch.style="background: red";
+        }
+
+    </script>
 </head>
 <body>
 <%
@@ -35,14 +49,20 @@
         <div class="col col-4">
             <form action="users.jsp" method="GET">
                 <div class="form-group">
-                    <label>name:</label>
-                    <input placeholder="Enter name" class="form-control" type="text" name="name" value=""/>
+                    <label for="name">name:</label>
+                    <input onkeyup="writeWhatIamTyping()"
+                            placeholder="Enter name" class="form-control" type="text" name="name" value=""
+                    id="whatIamtyping"/>
+                    text here:
+                    <span id="typeing"></span>
+
                 </div>
                 <div class="form-group">
-                    <label>surname:</label>
+                    <label for="surname">surname:</label>
                     <input placeholder="Enter surname" class="form-control" type="text" name="surname" value=""/>
                 </div>
-                <input class="btn btn-primary" type="submit" name="search" value="Search">
+                <input class="btn btn-primary" type="submit" name="search" value="Search" id="btnsearch">
+                <input class="btn btn-primary" type="submit" name="search" value="Change color"/>
             </form>
         </div>
 
