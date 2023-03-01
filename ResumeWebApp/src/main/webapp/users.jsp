@@ -21,7 +21,7 @@
     String name = request.getParameter("name");
     String surname = request.getParameter("surname");
 
-    String nationalityIdStr = request.getParameter("nid");
+    String nationalityIdStr = request.getParameter("nationality_id");
     Integer nationalityId = null;
     if (nationalityIdStr != null && !nationalityIdStr.trim().isEmpty()) {
         nationalityId = Integer.parseInt(nationalityIdStr);
