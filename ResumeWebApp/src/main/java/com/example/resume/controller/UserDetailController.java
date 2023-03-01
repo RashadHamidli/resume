@@ -1,4 +1,4 @@
-package com.example.resume;
+package com.example.resume.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "UserDetailController", value = "/userdetail")
 public class UserDetailController extends HttpServlet {
-    private UserDaoInter userDao = Context.instanceUserDao();
+    private final UserDaoInter userDao = Context.instanceUserDao();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
