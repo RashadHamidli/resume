@@ -21,7 +21,7 @@ public class SecurityFilter implements Filter {
             HttpServletRequest req = (HttpServletRequest) request;
             HttpServletResponse res = (HttpServletResponse) response;
             if (!req.getRequestURI().contains("/login")  && req.getSession().getAttribute("loggedInUser") == null) {
-                ControllerUtil.errorPage(res, new IllegalArgumentException("not found!!!"));
+                res.sendRedirect("login");
             } else {
                 chain.doFilter(request, response);
             }

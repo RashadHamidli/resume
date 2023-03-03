@@ -10,6 +10,7 @@ public class User {
     private String surname;
     private String phone;
     private  String email;
+    private String password;
     private String profileDesc;
     private Date birthDate;
     private  Country nationality;
@@ -35,6 +36,9 @@ public class User {
         this.birthPlace = birthPlace;
         this.profileDesc=profileDesc;
         this.address=address;
+    }
+    public User(String password){
+        this.password=password;
     }
 
     @Override
@@ -132,6 +136,12 @@ public class User {
     public void setSkills(List<UserSkill> skills) {
         this.skills = skills;
     }
-    
-    
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

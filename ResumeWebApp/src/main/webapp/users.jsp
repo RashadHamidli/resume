@@ -54,7 +54,13 @@
                 <input class="btn btn-primary" type="submit" name="search" value="Search" id="btnsearch">
             </form>
         </div>
-
+        <div class="container">
+            <div class="row">
+                <div class="col col-4">
+                    <form action="logout" method="POST">
+                        <input class="btn btn-primary" type="submit" name="action" value="logout">
+                    </form>
+                </div>
     </div>
     <div>
         <table class="table">

@@ -1,5 +1,6 @@
 package com.example.resume.controller;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.resume.util.ControllerUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
     private final UserDaoInter userDao = Context.instanceUserDao();
-
+    private static BCrypt.Verifyer verifyer =BCrypt.verifyer();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,10 +26,14 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        try {
            String email = request.getParameter("email");
-           String password = request.getParameter("password");
-           User user = userDao.findByEmailAndPassword(email, password);
-           if (user==null){
-               throw new IllegalArgumentException("email or password is incorrect!");
+           String password=request.getParameter("password");
+           User user = userDao.findByEmail(email);
+           if (user==null ){
+               throw new IllegalArgumentException("User doesn't exist!");
+           }
+           BCrypt.Result rs=verifyer.verify(password.toCharArray(), user.getPassword().toCharArray());
+           if(!rs.verified){
+               throw new IllegalArgumentException("password is incorrect!");
            }
            request.getSession().setAttribute("loggedInUser", user);
            response.sendRedirect("users");
