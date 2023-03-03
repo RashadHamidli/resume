@@ -1,0 +1,631 @@
+Index: src/main/webapp/user.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page import=\"org.example.dao.inter.UserDaoInter\" %>\r\n<%@ page import=\"org.example.main.Context\" %>\r\n<%@ page import=\"org.example.entity.User\" %>\r\n<%@ page import=\"java.util.List\" %><%--\r\n  Created by IntelliJ IDEA.\r\n  User: mr_rashad\r\n  Date: 25.02.2023\r\n  Time: 16:38\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<html>\r\n<head>\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n    <title>JSP page</title>\r\n</head>\r\n<body>\r\n<%\r\n    UserDaoInter userDao = Context.instanceUserDao();\r\n    List<User> list = userDao.getAll();\r\n%>\r\n<div>\r\n    <form action=\"user.jsp\" method=\"POST\">\r\n        <input type=\"hidden\" name=\"id\" value=\"\"/>\r\n        <label>name:</label>\r\n        <input type=\"text\" name=\"name\" value=\"\"/>\r\n        <br/>\r\n        <label>surname:</label>\r\n        <input type=\"text\" name=\"surname\" value=\"\"/>\r\n        <input type=\"submit\" name=\"search\" value=\"Search\">\r\n        <div>\r\n            <table>\r\n                <thead>\r\n                <tr>\r\n                    <th>name</th>\r\n                    <th>surname</th>\r\n                    <th>nationality</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <%\r\n                    for (User u : list) {\r\n                %>\r\n                <tr>\r\n                    <td><%=u.getName()%></td>\r\n                    <td><%=u.getSurname()%></td>\r\n                    <td><%=u.getNationality().getName()==null?\"N/A\":u.getNationality().getName()%></td>\r\n                </tr>\r\n                <%}%>\r\n                </tbody>\r\n            </table>\r\n\r\n        </div>\r\n\r\n\r\n        <label>address:</label>\r\n        <input type=\"text\" name=\"address\" value=\"\"/>\r\n        <br/>\r\n        <label>phone:</label>\r\n        <input type=\"text\" name=\"phone\" value=\"\"/>\r\n        <br/>\r\n        <label>email:</label>\r\n        <input type=\"text\" name=\"email\" value=\"\"/>\r\n    </form>\r\n\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/user.jsp b/src/main/webapp/user.jsp
+--- a/src/main/webapp/user.jsp	(revision d8f89f926d1ed12c829ceb31dccb94e9095685b8)
++++ b/src/main/webapp/user.jsp	(date 1677426032265)
+@@ -17,7 +17,15 @@
+ <body>
+ <%
+     UserDaoInter userDao = Context.instanceUserDao();
+-    List<User> list = userDao.getAll();
++    String name=request.getParameter("name");
++    String surname=request.getParameter("surname");
++    String nationalityIdStr=request.getParameter("nid");
++    Integer nationalityId=null;
++    if(nationalityIdStr!=null){
++        nationalityId=Integer.parseInt(nationalityIdStr);
++    }
++
++    List<User> list = userDao.getAll(name, surname, nationalityId);
+ %>
+ <div>
+     <form action="user.jsp" method="POST">
+Index: ../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.dao.imple;\r\n\r\nimport org.example.entity.Country;\r\nimport org.example.entity.User;\r\nimport org.example.dao.inter.AbstractDAO;\r\nimport org.example.dao.inter.UserDaoInter;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n\r\npublic class UserDaoImpl extends AbstractDAO implements UserDaoInter {\r\n    private User getUser(ResultSet rs) throws Exception {\r\n        int id = rs.getInt(\"id\");\r\n        String name = rs.getString(\"name\");\r\n        String surname = rs.getString(\"surname\");\r\n        String phone = rs.getString(\"phone\");\r\n        String email = rs.getString(\"email\");\r\n        String profileDesc=rs.getString(\"profile_description\");\r\n        int nationalityId = rs.getInt(\"nationality_id\");\r\n        int birthplaceId = rs.getInt(\"birthplace_id\");\r\n        String nationalityStr = rs.getString(\"nationality\");\r\n        String birthPlaceStr = rs.getString(\"birthplace\");\r\n        Date birthdate = rs.getDate(\"birthdate\");\r\n        String address=rs.getString(\"address\");\r\n\r\n        Country nationality = new Country(nationalityId, null, nationalityStr);\r\n        Country birthplace = new Country(birthplaceId, birthPlaceStr, null);\r\n\r\n        return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);\r\n    }\r\n   \r\n    \r\n\r\n\r\n    @Override\r\n    public List<User> getAll() {\r\n        List<User> result = new ArrayList<>();\r\n        try (Connection c = connect()) {\r\n\r\n            Statement stmt = c.createStatement();\r\n            stmt.execute(\"select \\n\" +\r\n                    \"\\tu.*,\\n\" +\r\n                    \"\\tc.name as birthplace, \\n\" +\r\n                    \"\\tn.nationality \\n\" +\r\n                    \"from user u\\n\" +\r\n                    \"left join country n on u.nationality_id=n.id\\n\" +\r\n                    \"left join country c on u.birthplace_id=c.id\");\r\n            ResultSet rs = stmt.getResultSet();\r\n\r\n            while (rs.next()) {\r\n                User u = getUser(rs);\r\n                result.add(u);\r\n            }\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n        }\r\n        return result;\r\n    }\r\n\r\n    @Override\r\n    public boolean updateUser(User u) {\r\n        try (Connection c = connect()) {\r\n            PreparedStatement stmt = c.prepareStatement(\"update user set name=?, surname=?, phone=?, email=?, profile_description=?, birthdate=?, address=?, birthplace_id=?, nationality_id=?  where id =?\");\r\n            stmt.setString(1, u.getName());\r\n            stmt.setString(2, u.getSurname());\r\n            stmt.setString(3, u.getPhone());\r\n            stmt.setString(4, u.getEmail());\r\n            stmt.setString(5, u.getProfileDesc());\r\n            stmt.setDate(6, u.getBirthDate());\r\n            stmt.setString(7, u.getAddress());\r\n            stmt.setInt(8, u.getBirthPlace().getId());\r\n            stmt.setInt(9, u.getNationality().getId());\r\n            stmt.setInt(10, u.getId());\r\n            \r\n            stmt.execute();\r\n            return stmt.execute();\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public boolean removeUser(int id) {\r\n        try (Connection c = connect();) {\r\n            Statement stmt = c.createStatement();\r\n            return stmt.execute(\"delete from user where id =\" + id);\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public User getById(int userId) {\r\n\r\n        User result = null;\r\n\r\n        try (Connection c = connect()) {\r\n            Statement stmt = c.createStatement();\r\n            stmt.execute(\"select  \"\r\n                    + \"   u. *,  \"\r\n                    + \"   n.nationality,  \"\r\n                    + \"   c.name as birthplace  \"\r\n                    + \"from user u  \"\r\n                    + \"left join country n on u.nationality_id=n.id  \"\r\n                    + \"left join country c on u.birthplace_id=c.id where u.id =\" + userId);\r\n            ResultSet rs = stmt.getResultSet();\r\n            while (rs.next()) {\r\n                result = getUser(rs);\r\n            }\r\n\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n        }\r\n        return result;\r\n    }\r\n\r\n    @Override\r\n    public boolean addUser(User u) {\r\n        try (Connection c = connect()) {\r\n            PreparedStatement stmt = c.prepareStatement(\"insert into user(name, surname, phone, email, profile_description) values(?,?,?,?)\");\r\n            stmt.setString(1, u.getName());\r\n            stmt.setString(2, u.getSurname());\r\n            stmt.setString(3, u.getPhone());\r\n            stmt.setString(4, u.getEmail());\r\n            stmt.setString(5, u.getProfileDesc());\r\n\r\n            return stmt.execute();\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java b/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java
+--- a/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java	(revision d8f89f926d1ed12c829ceb31dccb94e9095685b8)
++++ b/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java	(date 1677424747284)
+@@ -18,36 +18,56 @@
+         String surname = rs.getString("surname");
+         String phone = rs.getString("phone");
+         String email = rs.getString("email");
+-        String profileDesc=rs.getString("profile_description");
++        String profileDesc = rs.getString("profile_description");
+         int nationalityId = rs.getInt("nationality_id");
+         int birthplaceId = rs.getInt("birthplace_id");
+         String nationalityStr = rs.getString("nationality");
+         String birthPlaceStr = rs.getString("birthplace");
+         Date birthdate = rs.getDate("birthdate");
+-        String address=rs.getString("address");
++        String address = rs.getString("address");
+ 
+         Country nationality = new Country(nationalityId, null, nationalityStr);
+         Country birthplace = new Country(birthplaceId, birthPlaceStr, null);
+ 
+         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
+     }
+-   
+-    
+ 
+ 
+     @Override
+-    public List<User> getAll() {
++    public List<User> getAll(String name, String surname, Integer nationalityID) {
+         List<User> result = new ArrayList<>();
+         try (Connection c = connect()) {
+-
+-            Statement stmt = c.createStatement();
+-            stmt.execute("select \n" +
+-                    "\tu.*,\n" +
+-                    "\tc.name as birthplace, \n" +
+-                    "\tn.nationality \n" +
+-                    "from user u\n" +
+-                    "left join country n on u.nationality_id=n.id\n" +
+-                    "left join country c on u.birthplace_id=c.id");
++            String sql = "select "
++                    + "tu.*,"
++                    + "c.name as birthplace, "
++                    + "tn.nationality "
++                    + "from user u"
++                    + "left join country n on u.nationality_id=n.id"
++                    + "left join country c on u.birthplace_id=c.id where 1=1";
++            if(name!=null){
++                sql+=" and name=? ";
++            }
++            if(surname!=null){
++                sql+=" and surname=? ";
++            }
++            if(nationalityID!=null){
++                sql+=" and nationality_id=? ";
++            }
++            PreparedStatement stmt = c.prepareStatement(sql);
++            int i=1;
++            if(name!=null){
++                stmt.setString(i, name);
++                i++;
++            }
++            if(surname!=null){
++                stmt.setString(i, surname);
++                i++;
++            }
++            if(nationalityID!=null){
++                stmt.setInt(i, nationalityID);
++                i++;
++            }
++            stmt.execute();
+             ResultSet rs = stmt.getResultSet();
+ 
+             while (rs.next()) {
+@@ -74,7 +94,7 @@
+             stmt.setInt(8, u.getBirthPlace().getId());
+             stmt.setInt(9, u.getNationality().getId());
+             stmt.setInt(10, u.getId());
+-            
++
+             stmt.execute();
+             return stmt.execute();
+         } catch (Exception ex) {
+@@ -95,8 +115,6 @@
+     }
+ 
+ 
+-
+-
+     @Override
+     public User getById(int userId) {
+ 
+Index: ../ResumeDbApp/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/.idea/vcs.xml b/../ResumeDbApp/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1677424747384)
++++ b/../ResumeDbApp/.idea/vcs.xml	(date 1677424747384)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../ResumeDbApp/.idea/ResumeDbApp.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/.idea/ResumeDbApp.iml b/../ResumeDbApp/.idea/ResumeDbApp.iml
+new file mode 100644
+--- /dev/null	(date 1677424747396)
++++ b/../ResumeDbApp/.idea/ResumeDbApp.iml	(date 1677424747396)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++    </content>
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/webContexts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/webContexts.xml b/.idea/webContexts.xml
+new file mode 100644
+--- /dev/null	(date 1677426032461)
++++ b/.idea/webContexts.xml	(date 1677426032461)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="WebContextManager">
++    <option name="state">
++      <map>
++        <entry key="file://$PROJECT_DIR$/src/main/webapp/user.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
++      </map>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1677424744131)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch	(date 1677424744131)
+@@ -0,0 +1,255 @@
++Index: src/main/webapp/user.jsp
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><%@ page import=\"org.example.dao.inter.UserDaoInter\" %>\r\n<%@ page import=\"org.example.main.Context\" %>\r\n<%@ page import=\"org.example.entity.User\" %>\r\n<%@ page import=\"java.util.List\" %><%--\r\n  Created by IntelliJ IDEA.\r\n  User: mr_rashad\r\n  Date: 25.02.2023\r\n  Time: 16:38\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<html>\r\n<head>\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n    <title>JSP page</title>\r\n</head>\r\n<body>\r\n<%\r\n    UserDaoInter userDao = Context.instanceUserDao();\r\n    List<User> list = userDao.getAll();\r\n%>\r\n<div>\r\n    <form action=\"user.jsp\" method=\"POST\">\r\n        <input type=\"hidden\" name=\"id\" value=\"\"/>\r\n        <label>name:</label>\r\n        <input type=\"text\" name=\"name\" value=\"\"/>\r\n        <br/>\r\n        <label>surname:</label>\r\n        <input type=\"text\" name=\"surname\" value=\"\"/>\r\n        <input type=\"submit\" name=\"search\" value=\"Search\">\r\n        <div>\r\n            <table>\r\n                <thead>\r\n                <tr>\r\n                    <th>name</th>\r\n                    <th>surname</th>\r\n                    <th>nationality</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <%\r\n                    for (User u : list) {\r\n                %>\r\n                <tr>\r\n                    <td><%=u.getName()%></td>\r\n                    <td><%=u.getSurname()%></td>\r\n                    <td><%=u.getNationality().getName()==null?\"N/A\":u.getNationality().getName()%></td>\r\n                </tr>\r\n                <%}%>\r\n                </tbody>\r\n            </table>\r\n\r\n        </div>\r\n\r\n\r\n        <label>address:</label>\r\n        <input type=\"text\" name=\"address\" value=\"\"/>\r\n        <br/>\r\n        <label>phone:</label>\r\n        <input type=\"text\" name=\"phone\" value=\"\"/>\r\n        <br/>\r\n        <label>email:</label>\r\n        <input type=\"text\" name=\"email\" value=\"\"/>\r\n    </form>\r\n\r\n</div>\r\n</body>\r\n</html>\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/webapp/user.jsp b/src/main/webapp/user.jsp
++--- a/src/main/webapp/user.jsp	(revision aac39f28b74139baa44bf03c154932b80362a64e)
+++++ b/src/main/webapp/user.jsp	(date 1677424731031)
++@@ -17,7 +17,7 @@
++ <body>
++ <%
++     UserDaoInter userDao = Context.instanceUserDao();
++-    List<User> list = userDao.getAll();
+++    List<User> list = userDao.getAll("","",1);
++ %>
++ <div>
++     <form action="user.jsp" method="POST">
++Index: ../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package org.example.dao.imple;\r\n\r\nimport org.example.entity.Country;\r\nimport org.example.entity.User;\r\nimport org.example.dao.inter.AbstractDAO;\r\nimport org.example.dao.inter.UserDaoInter;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n\r\npublic class UserDaoImpl extends AbstractDAO implements UserDaoInter {\r\n    private User getUser(ResultSet rs) throws Exception {\r\n        int id = rs.getInt(\"id\");\r\n        String name = rs.getString(\"name\");\r\n        String surname = rs.getString(\"surname\");\r\n        String phone = rs.getString(\"phone\");\r\n        String email = rs.getString(\"email\");\r\n        String profileDesc=rs.getString(\"profile_description\");\r\n        int nationalityId = rs.getInt(\"nationality_id\");\r\n        int birthplaceId = rs.getInt(\"birthplace_id\");\r\n        String nationalityStr = rs.getString(\"nationality\");\r\n        String birthPlaceStr = rs.getString(\"birthplace\");\r\n        Date birthdate = rs.getDate(\"birthdate\");\r\n        String address=rs.getString(\"address\");\r\n\r\n        Country nationality = new Country(nationalityId, null, nationalityStr);\r\n        Country birthplace = new Country(birthplaceId, birthPlaceStr, null);\r\n\r\n        return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);\r\n    }\r\n   \r\n    \r\n\r\n\r\n    @Override\r\n    public List<User> getAll() {\r\n        List<User> result = new ArrayList<>();\r\n        try (Connection c = connect()) {\r\n\r\n            Statement stmt = c.createStatement();\r\n            stmt.execute(\"select \\n\" +\r\n                    \"\\tu.*,\\n\" +\r\n                    \"\\tc.name as birthplace, \\n\" +\r\n                    \"\\tn.nationality \\n\" +\r\n                    \"from user u\\n\" +\r\n                    \"left join country n on u.nationality_id=n.id\\n\" +\r\n                    \"left join country c on u.birthplace_id=c.id\");\r\n            ResultSet rs = stmt.getResultSet();\r\n\r\n            while (rs.next()) {\r\n                User u = getUser(rs);\r\n                result.add(u);\r\n            }\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n        }\r\n        return result;\r\n    }\r\n\r\n    @Override\r\n    public boolean updateUser(User u) {\r\n        try (Connection c = connect()) {\r\n            PreparedStatement stmt = c.prepareStatement(\"update user set name=?, surname=?, phone=?, email=?, profile_description=?, birthdate=?, address=?, birthplace_id=?, nationality_id=?  where id =?\");\r\n            stmt.setString(1, u.getName());\r\n            stmt.setString(2, u.getSurname());\r\n            stmt.setString(3, u.getPhone());\r\n            stmt.setString(4, u.getEmail());\r\n            stmt.setString(5, u.getProfileDesc());\r\n            stmt.setDate(6, u.getBirthDate());\r\n            stmt.setString(7, u.getAddress());\r\n            stmt.setInt(8, u.getBirthPlace().getId());\r\n            stmt.setInt(9, u.getNationality().getId());\r\n            stmt.setInt(10, u.getId());\r\n            \r\n            stmt.execute();\r\n            return stmt.execute();\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public boolean removeUser(int id) {\r\n        try (Connection c = connect();) {\r\n            Statement stmt = c.createStatement();\r\n            return stmt.execute(\"delete from user where id =\" + id);\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public User getById(int userId) {\r\n\r\n        User result = null;\r\n\r\n        try (Connection c = connect()) {\r\n            Statement stmt = c.createStatement();\r\n            stmt.execute(\"select  \"\r\n                    + \"   u. *,  \"\r\n                    + \"   n.nationality,  \"\r\n                    + \"   c.name as birthplace  \"\r\n                    + \"from user u  \"\r\n                    + \"left join country n on u.nationality_id=n.id  \"\r\n                    + \"left join country c on u.birthplace_id=c.id where u.id =\" + userId);\r\n            ResultSet rs = stmt.getResultSet();\r\n            while (rs.next()) {\r\n                result = getUser(rs);\r\n            }\r\n\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n        }\r\n        return result;\r\n    }\r\n\r\n    @Override\r\n    public boolean addUser(User u) {\r\n        try (Connection c = connect()) {\r\n            PreparedStatement stmt = c.prepareStatement(\"insert into user(name, surname, phone, email, profile_description) values(?,?,?,?)\");\r\n            stmt.setString(1, u.getName());\r\n            stmt.setString(2, u.getSurname());\r\n            stmt.setString(3, u.getPhone());\r\n            stmt.setString(4, u.getEmail());\r\n            stmt.setString(5, u.getProfileDesc());\r\n\r\n            return stmt.execute();\r\n        } catch (Exception ex) {\r\n            ex.printStackTrace();\r\n            return false;\r\n        }\r\n    }\r\n\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java b/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java
++--- a/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java	(revision 857697b09314d3dfd3e1bb9610ac2de68d85a323)
+++++ b/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java	(date 1677423461030)
++@@ -18,36 +18,56 @@
++         String surname = rs.getString("surname");
++         String phone = rs.getString("phone");
++         String email = rs.getString("email");
++-        String profileDesc=rs.getString("profile_description");
+++        String profileDesc = rs.getString("profile_description");
++         int nationalityId = rs.getInt("nationality_id");
++         int birthplaceId = rs.getInt("birthplace_id");
++         String nationalityStr = rs.getString("nationality");
++         String birthPlaceStr = rs.getString("birthplace");
++         Date birthdate = rs.getDate("birthdate");
++-        String address=rs.getString("address");
+++        String address = rs.getString("address");
++ 
++         Country nationality = new Country(nationalityId, null, nationalityStr);
++         Country birthplace = new Country(birthplaceId, birthPlaceStr, null);
++ 
++         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
++     }
++-   
++-    
++ 
++ 
++     @Override
++-    public List<User> getAll() {
+++    public List<User> getAll(String name, String surname, Integer nationalityID) {
++         List<User> result = new ArrayList<>();
++         try (Connection c = connect()) {
++-
++-            Statement stmt = c.createStatement();
++-            stmt.execute("select \n" +
++-                    "\tu.*,\n" +
++-                    "\tc.name as birthplace, \n" +
++-                    "\tn.nationality \n" +
++-                    "from user u\n" +
++-                    "left join country n on u.nationality_id=n.id\n" +
++-                    "left join country c on u.birthplace_id=c.id");
+++            String sql = "select "
+++                    + "tu.*,"
+++                    + "c.name as birthplace, "
+++                    + "tn.nationality "
+++                    + "from user u"
+++                    + "left join country n on u.nationality_id=n.id"
+++                    + "left join country c on u.birthplace_id=c.id where 1=1";
+++            if(name!=null){
+++                sql+=" and name=? ";
+++            }
+++            if(surname!=null){
+++                sql+=" and surname=? ";
+++            }
+++            if(nationalityID!=null){
+++                sql+=" and nationality_id=? ";
+++            }
+++            PreparedStatement stmt = c.prepareStatement(sql);
+++            int i=1;
+++            if(name!=null){
+++                stmt.setString(i, name);
+++                i++;
+++            }
+++            if(surname!=null){
+++                stmt.setString(i, surname);
+++                i++;
+++            }
+++            if(nationalityID!=null){
+++                stmt.setInt(i, nationalityID);
+++                i++;
+++            }
+++            stmt.execute();
++             ResultSet rs = stmt.getResultSet();
++ 
++             while (rs.next()) {
++@@ -74,7 +94,7 @@
++             stmt.setInt(8, u.getBirthPlace().getId());
++             stmt.setInt(9, u.getNationality().getId());
++             stmt.setInt(10, u.getId());
++-            
+++
++             stmt.execute();
++             return stmt.execute();
++         } catch (Exception ex) {
++@@ -95,8 +115,6 @@
++     }
++ 
++ 
++-
++-
++     @Override
++     public User getById(int userId) {
++ 
++Index: ../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package org.example.dao.inter;\r\n\r\nimport org.example.entity.User;\r\n\r\nimport java.util.List;\r\n\r\npublic interface UserDaoInter {\r\n    public List<User> getAll();\r\n\r\n    public User getById(int id);\r\n\r\n    public boolean addUser(User u);\r\n\r\n    public boolean updateUser(User u);\r\n\r\n    public boolean removeUser(int id);\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java b/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java
++--- a/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java	(revision 857697b09314d3dfd3e1bb9610ac2de68d85a323)
+++++ b/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java	(date 1677423750583)
++@@ -5,7 +5,7 @@
++ import java.util.List;
++ 
++ public interface UserDaoInter {
++-    public List<User> getAll();
+++    public List<User> getAll(String name, String surname, Integer nationalityId);
++ 
++     public User getById(int id);
++ 
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"ResumeWebApp:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5a1210dc-fbb3-478b-af0e-057d488467df\" name=\"Changes\" comment=\"Add\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/user.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/user.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MELrkY5iv1Suh59dBrk0PWxDJU\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Workspace/apache-tomcat-10.1.5-windows-x64/apache-tomcat-10.1.5/lib\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.tools\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 10.1.5\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.1.5\" ALTERNATIVE_JRE_ENABLED=\"false\">\r\n      <option name=\"UPDATE_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <option name=\"UPDATE_CLASSES_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <deployment>\r\n        <artifact name=\"ResumeWebApp:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/ResumeWebApp\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"f6962a11-813c-42b8-ae7f-3cb02e2447ac\" />\r\n      </server-settings>\r\n      <log_file alias=\"Tomcat Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/manager.*\" />\r\n      <log_file alias=\"Tomcat Host Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*\" />\r\n      <log_file alias=\"Tomcat Localhost Access Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"50889\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"ResumeWebApp:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5a1210dc-fbb3-478b-af0e-057d488467df\" name=\"Changes\" comment=\"\" />\r\n      <created>1677328002580</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677328002580</updated>\r\n      <workItem from=\"1677328003892\" duration=\"3224000\" />\r\n      <workItem from=\"1677408867681\" duration=\"8123000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add\">\r\n      <created>1677414102904</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1677414102904</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"add\" />\r\n    <MESSAGE value=\"Add\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision 857697b09314d3dfd3e1bb9610ac2de68d85a323)
+++++ b/.idea/workspace.xml	(date 1677424436286)
++@@ -10,9 +10,13 @@
++   </component>
++   <component name="ChangeListManager">
++     <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Add">
+++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/ResumeDbApp.iml" afterDir="false" />
+++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/modules.xml" afterDir="false" />
+++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/vcs.xml" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" afterDir="false" />
++       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++@@ -63,7 +67,7 @@
++     "RunOnceActivity.ShowReadmeOnStart": "true",
++     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++     "WebServerToolWindowFactoryState": "false",
++-    "last_opened_file_path": "C:/Workspace/apache-tomcat-10.1.5-windows-x64/apache-tomcat-10.1.5/lib",
+++    "last_opened_file_path": "C:/Workspace/resume/ResumeDbApp",
++     "node.js.detected.package.eslint": "true",
++     "node.js.detected.package.tslint": "true",
++     "node.js.selected.package.eslint": "(autodetect)",
++@@ -174,7 +178,7 @@
++       <option name="presentableId" value="Default" />
++       <updated>1677328002580</updated>
++       <workItem from="1677328003892" duration="3224000" />
++-      <workItem from="1677408867681" duration="8123000" />
+++      <workItem from="1677408867681" duration="9577000" />
++     </task>
++     <task id="LOCAL-00001" summary="Add">
++       <created>1677414102904</created>
++Index: ../ResumeDbApp/.idea/modules.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/.idea/modules.xml b/../ResumeDbApp/.idea/modules.xml
++new file mode 100644
++--- /dev/null	(date 1677422089317)
+++++ b/../ResumeDbApp/.idea/modules.xml	(date 1677422089317)
++@@ -0,0 +1,8 @@
+++<?xml version="1.0" encoding="UTF-8"?>
+++<project version="4">
+++  <component name="ProjectModuleManager">
+++    <modules>
+++      <module fileurl="file://$PROJECT_DIR$/.idea/ResumeDbApp.iml" filepath="$PROJECT_DIR$/.idea/ResumeDbApp.iml" />
+++    </modules>
+++  </component>
+++</project>
++\ No newline at end of file
++Index: ../ResumeDbApp/.idea/vcs.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/.idea/vcs.xml b/../ResumeDbApp/.idea/vcs.xml
++new file mode 100644
++--- /dev/null	(date 1677422089362)
+++++ b/../ResumeDbApp/.idea/vcs.xml	(date 1677422089362)
++@@ -0,0 +1,6 @@
+++<?xml version="1.0" encoding="UTF-8"?>
+++<project version="4">
+++  <component name="VcsDirectoryMappings">
+++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+++  </component>
+++</project>
++\ No newline at end of file
++Index: ../ResumeDbApp/.idea/ResumeDbApp.iml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/.idea/ResumeDbApp.iml b/../ResumeDbApp/.idea/ResumeDbApp.iml
++new file mode 100644
++--- /dev/null	(date 1677422089285)
+++++ b/../ResumeDbApp/.idea/ResumeDbApp.iml	(date 1677422089285)
++@@ -0,0 +1,8 @@
+++<?xml version="1.0" encoding="UTF-8"?>
+++<module version="4">
+++  <component name="NewModuleRootManager">
+++    <content url="file://$MODULE_DIR$">
+++      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+++    </content>
+++  </component>
+++</module>
++\ No newline at end of file
++Index: ../ResumeDbApp/src/main/java/org/example/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package org.example;\r\n\r\nimport org.example.dao.imple.UserDaoImpl;\r\nimport org.example.dao.inter.EmploymentHistoryDaoInter;\r\nimport org.example.dao.inter.UserDaoInter;\r\nimport org.example.dao.inter.UserSkillDaoInter;\r\nimport org.example.main.Context;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) throws Exception {\r\n\r\n        UserDaoInter dao = Context.instanceUserDao();\r\n        System.out.println(dao.getAll());\r\n    }\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/../ResumeDbApp/src/main/java/org/example/Main.java b/../ResumeDbApp/src/main/java/org/example/Main.java
++--- a/../ResumeDbApp/src/main/java/org/example/Main.java	(revision 857697b09314d3dfd3e1bb9610ac2de68d85a323)
+++++ b/../ResumeDbApp/src/main/java/org/example/Main.java	(date 1677423750559)
++@@ -11,7 +11,7 @@
++     public static void main(String[] args) throws Exception {
++ 
++         UserDaoInter dao = Context.instanceUserDao();
++-        System.out.println(dao.getAll());
+++        System.out.println(dao.getAll("AAA","BBB", 1));
++     }
++ 
++ }
+Index: ../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.dao.inter;\r\n\r\nimport org.example.entity.User;\r\n\r\nimport java.util.List;\r\n\r\npublic interface UserDaoInter {\r\n    public List<User> getAll();\r\n\r\n    public User getById(int id);\r\n\r\n    public boolean addUser(User u);\r\n\r\n    public boolean updateUser(User u);\r\n\r\n    public boolean removeUser(int id);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java b/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java
+--- a/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java	(revision d8f89f926d1ed12c829ceb31dccb94e9095685b8)
++++ b/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java	(date 1677424747330)
+@@ -5,7 +5,7 @@
+ import java.util.List;
+ 
+ public interface UserDaoInter {
+-    public List<User> getAll();
++    public List<User> getAll(String name, String surname, Integer nationalityId);
+ 
+     public User getById(int id);
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"ResumeWebApp:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5a1210dc-fbb3-478b-af0e-057d488467df\" name=\"Changes\" comment=\"Add\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/user.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/user.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n    <option name=\"importingSettings\">\r\n      <MavenImportingSettings>\r\n        <option name=\"workspaceImportEnabled\" value=\"true\" />\r\n      </MavenImportingSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2MELrkY5iv1Suh59dBrk0PWxDJU\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Workspace/apache-tomcat-10.1.5-windows-x64/apache-tomcat-10.1.5/lib\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.tools\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 10.1.5\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.1.5\" ALTERNATIVE_JRE_ENABLED=\"false\">\r\n      <option name=\"UPDATE_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <option name=\"UPDATE_CLASSES_ON_FRAME_DEACTIVATION\" value=\"true\" />\r\n      <deployment>\r\n        <artifact name=\"ResumeWebApp:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/ResumeWebApp\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"f6962a11-813c-42b8-ae7f-3cb02e2447ac\" />\r\n      </server-settings>\r\n      <log_file alias=\"Tomcat Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/manager.*\" />\r\n      <log_file alias=\"Tomcat Host Manager Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/host-manager.*\" />\r\n      <log_file alias=\"Tomcat Localhost Access Log\" path=\"%IDEA_RUN:CATALINA_BASE%/logs/localhost_access_log.*\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"50889\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"ResumeWebApp:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5a1210dc-fbb3-478b-af0e-057d488467df\" name=\"Changes\" comment=\"\" />\r\n      <created>1677328002580</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1677328002580</updated>\r\n      <workItem from=\"1677328003892\" duration=\"3224000\" />\r\n      <workItem from=\"1677408867681\" duration=\"8123000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Add\">\r\n      <created>1677414102904</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1677414102904</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"add\" />\r\n    <MESSAGE value=\"Add\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add\" />\r\n  </component>\r\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\r\n    <expand />\r\n    <select />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d8f89f926d1ed12c829ceb31dccb94e9095685b8)
++++ b/.idea/workspace.xml	(date 1677425862617)
+@@ -9,9 +9,15 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Add">
++    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="add">
++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/ResumeDbApp.iml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/modules.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/resumewebapp/UserController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/user.jsp" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -28,6 +34,18 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
++  </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="282815e4-35ed-40d6-ad67-40d8a6c969c6" />
++        <option name="url" value="https://github.com/RashadHamidli/resume.git" />
++      </UrlAndAccount>
++    </option>
+   </component>
+   <component name="LogFilters">
+     <option name="FILTER_ERRORS" value="false" />
+@@ -57,24 +75,24 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "C:/Workspace/apache-tomcat-10.1.5-windows-x64/apache-tomcat-10.1.5/lib",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "configurable.group.tools",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Workspace/resume/ResumeDbApp&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="Tomcat 10.1.5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.5" ALTERNATIVE_JRE_ENABLED="false">
+       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+@@ -174,7 +192,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1677328002580</updated>
+       <workItem from="1677328003892" duration="3224000" />
+-      <workItem from="1677408867681" duration="8123000" />
++      <workItem from="1677408867681" duration="10950000" />
+     </task>
+     <task id="LOCAL-00001" summary="Add">
+       <created>1677414102904</created>
+@@ -183,7 +201,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1677414102904</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="add">
++      <created>1677424735992</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1677424735992</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -201,9 +226,9 @@
+     </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+-    <MESSAGE value="add" />
+     <MESSAGE value="Add" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Add" />
++    <MESSAGE value="add" />
++    <option name="LAST_COMMIT_MESSAGE" value="add" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />
+Index: ../ResumeDbApp/.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/.idea/modules.xml b/../ResumeDbApp/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1677424747371)
++++ b/../ResumeDbApp/.idea/modules.xml	(date 1677424747371)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/ResumeDbApp.iml" filepath="$PROJECT_DIR$/.idea/ResumeDbApp.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../ResumeDbApp/src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport org.example.dao.imple.UserDaoImpl;\r\nimport org.example.dao.inter.EmploymentHistoryDaoInter;\r\nimport org.example.dao.inter.UserDaoInter;\r\nimport org.example.dao.inter.UserSkillDaoInter;\r\nimport org.example.main.Context;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) throws Exception {\r\n\r\n        UserDaoInter dao = Context.instanceUserDao();\r\n        System.out.println(dao.getAll());\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../ResumeDbApp/src/main/java/org/example/Main.java b/../ResumeDbApp/src/main/java/org/example/Main.java
+--- a/../ResumeDbApp/src/main/java/org/example/Main.java	(revision d8f89f926d1ed12c829ceb31dccb94e9095685b8)
++++ b/../ResumeDbApp/src/main/java/org/example/Main.java	(date 1677424747413)
+@@ -11,7 +11,7 @@
+     public static void main(String[] args) throws Exception {
+ 
+         UserDaoInter dao = Context.instanceUserDao();
+-        System.out.println(dao.getAll());
++        System.out.println(dao.getAll("AAA","BBB", 1));
+     }
+ 
+ }
