@@ -34,7 +34,6 @@ public class LoginController extends HttpServlet {
            request.getSession().setAttribute("loggedInUser", user);
            response.sendRedirect("/users");
        }catch (Exception ex){
-           ex.printStackTrace();
            ControllerUtil.errorPage(response, ex);
        }
     }
