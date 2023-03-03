@@ -5,6 +5,7 @@ import org.example.entity.User;
 import java.util.List;
 
 public interface UserDaoInter {
+    public User findByEmailAndPassword(String email, String password);
     public List<User> getAll(String name, String surname, Integer nationalityId);
 
     public User getById(int id);

@@ -12,6 +12,8 @@ import java.util.List;
 
 
 public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
+
+
     private User getUser(ResultSet rs) throws Exception {
         int id = rs.getInt("id");
         String name = rs.getString("name");
@@ -32,6 +34,23 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
     }
 
+
+    @Override
+    public User findByEmailAndPassword(String email, String password) {
+     User result=null;
+        try(Connection c=connect()) {
+            PreparedStatement stmt=c.prepareStatement("select *from user where email=? and password=?");
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs=stmt.executeQuery();
+            while (rs.next()){
+                result=getUser(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     @Override
     public List<User> getAll(String name, String surname, Integer nationalityId) {
