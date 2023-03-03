@@ -1,6 +1,7 @@
 package com.example.resume.controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,6 +9,7 @@ import org.example.dao.inter.UserDaoInter;
 import org.example.main.Context;
 
 import java.io.IOException;
+@WebServlet(name = "ErrorController", urlPatterns = {"/error"})
     public class ErrorController extends HttpServlet {
 
         private final UserDaoInter userDao = Context.instanceUserDao();

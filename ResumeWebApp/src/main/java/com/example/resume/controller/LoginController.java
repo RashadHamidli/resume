@@ -11,15 +11,14 @@ import org.example.entity.User;
 import org.example.main.Context;
 
 import java.io.IOException;
-
-@WebServlet(name = "LoginController", value = "/login")
+@WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
     private final UserDaoInter userDao = Context.instanceUserDao();
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("users.jsp").forward(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     @Override
@@ -32,7 +31,7 @@ public class LoginController extends HttpServlet {
                throw new IllegalArgumentException("email or password is incorrect!");
            }
            request.getSession().setAttribute("loggedInUser", user);
-           response.sendRedirect("/users");
+           response.sendRedirect("users");
        }catch (Exception ex){
            ControllerUtil.errorPage(response, ex);
        }

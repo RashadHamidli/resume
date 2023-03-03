@@ -17,23 +17,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/users.js"></script>
     <title>JSP page</title>
-    <script>
-        function writeWhatIamTyping() {
-            var input =document.getElementById("whatIamtyping");
-            var text=document.getElementById("typeing");
-
-            var inputStr=input.value;
-            text.innerHTML=inputStr;
-        }
-        function changeColor() {
-            var btnsearch=document.getElementById("btnsearch");
-            btnsearch.style="background: red";
-        }
-
-
-    </script>
 </head>
 <body>
+<%
+    User user=(User)  session.getAttribute("loggeddInUser");
+%>
+<%--<%="Wellcome, "+user.getName()%>--%>
 <%
     UserDaoInter userDao = Context.instanceUserDao();
 

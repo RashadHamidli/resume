@@ -10,8 +10,7 @@ import org.example.entity.User;
 import org.example.main.Context;
 
 import java.io.IOException;
-
-@WebServlet(name = "UserDetailController", value = "/userdetail")
+@WebServlet(name = "UserDetailController", urlPatterns = {"/userdetail"})
 public class UserDetailController extends HttpServlet {
     private final UserDaoInter userDao = Context.instanceUserDao();
 

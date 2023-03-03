@@ -14,6 +14,8 @@
 <h1>ResumeWebApp </h1>
 <h2>Users</h2>
 <h3>http://localhost:8080/ResumeWebApp/users <a href="http://localhost:8080/ResumeWebApp/users">Link</a></h3>
+<h2>Login</h2>
+<h3>http://localhost:8080/ResumeWebApp/login <a href="http://localhost:8080/ResumeWebApp/login.jsp">Link</a></h3>
 <h2>Userdetail</h2>
 <h3>http://localhost:8080/ResumeWebApp/userdetail <a href="http://localhost:8080/ResumeWebApp/userdetail">Link</a></h3>
 <h2>userdetail?id=8</h2>

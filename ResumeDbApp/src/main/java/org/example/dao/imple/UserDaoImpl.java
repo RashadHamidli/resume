@@ -33,6 +33,20 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
 
         return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
     }
+    private User getUserSimple(ResultSet rs) throws Exception {
+        int id = rs.getInt("id");
+        String name = rs.getString("name");
+        String surname = rs.getString("surname");
+        String phone = rs.getString("phone");
+        String email = rs.getString("email");
+        String profileDesc = rs.getString("profile_description");
+        int nationalityId = rs.getInt("nationality_id");
+        int birthplaceId = rs.getInt("birthplace_id");
+        Date birthdate = rs.getDate("birthdate");
+        String address = rs.getString("address");
+
+        return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, null, null, address);
+    }
 
 
     @Override
@@ -44,7 +58,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             stmt.setString(2, password);
             ResultSet rs=stmt.executeQuery();
             while (rs.next()){
-                result=getUser(rs);
+                result=getUserSimple(rs);
             }
         } catch (Exception e) {
             e.printStackTrace();
