@@ -9,9 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="add">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/ResumeDbApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/ResumeDbApp-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/CountryDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/CountryDaoInter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/EmploymentHistoryDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/EmploymentHistoryDaoInter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/SkillDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/SkillDaoInter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserDaoInter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserSkillDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserSkillDaoInter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Country.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeWebApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeWebApp/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +285,8 @@
       <workItem from="1677823708814" duration="20076000" />
       <workItem from="1677844904454" duration="650000" />
       <workItem from="1677925114934" duration="131000" />
-      <workItem from="1677925538754" duration="275000" />
+      <workItem from="1677925538754" duration="338000" />
+      <workItem from="1677940377485" duration="1173000" />
     </task>
     <task id="LOCAL-00001" summary="Add">
       <created>1677414102904</created>
@@ -434,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677925634899</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677925848860</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1677925848860</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +488,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;ResumeWebApp/.idea/workspace.xml" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="add" />
-    <option name="LAST_COMMIT_MESSAGE" value="add" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
