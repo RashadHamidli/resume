@@ -9,30 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+    <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/ResumeDbApp-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/ResumeDbApp-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/CountryDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/CountryDaoInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/EmploymentHistoryDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/EmploymentHistoryDaoInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/SkillDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/SkillDaoInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserDaoInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserSkillDaoInter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/dao/inter/UserSkillDaoInter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Country.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeWebApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeWebApp/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,20 +265,8 @@
       <workItem from="1677925114934" duration="131000" />
       <workItem from="1677925538754" duration="338000" />
       <workItem from="1677940377485" duration="1173000" />
-    </task>
-    <task id="LOCAL-00001" summary="Add">
-      <created>1677414102904</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1677414102904</updated>
-    </task>
-    <task id="LOCAL-00002" summary="add">
-      <created>1677424735992</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1677424735992</updated>
+      <workItem from="1677946751449" duration="1127000" />
+      <workItem from="1678011908194" duration="668000" />
     </task>
     <task id="LOCAL-00003" summary="Merge remote-tracking branch 'origin/main'">
       <created>1677426059329</created>
@@ -463,7 +429,189 @@
       <option name="project" value="LOCAL" />
       <updated>1677925848860</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946866156</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946866156</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946898155</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946898155</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946907893</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946907893</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946919852</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946919852</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946934604</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946934604</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946946377</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946946377</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946959802</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946959802</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946968157</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946968157</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946977129</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946977129</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677946993512</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1677946993512</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947001542</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947001542</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947009786</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947009786</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947017788</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947017788</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947025395</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947025395</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947033126</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947033126</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947041767</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947041767</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947051695</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947051695</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947059620</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947059620</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947067610</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947067610</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947075799</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947075799</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947083379</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947083379</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947091873</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947091873</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947212019</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947212019</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class">
+      <created>1677947232951</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947232951</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Merge remote-tracking branch 'origin/main'">
+      <created>1677947258223</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947258225</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Merge remote-tracking branch 'origin/main'">
+      <created>1677947273628</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1677947273628</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,10 +634,10 @@
     </ignored-roots>
     <MESSAGE value="Add" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;ResumeWebApp/.idea/workspace.xml" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="add" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/Main.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/CountryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/EmploymentHistoryDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/SkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/dao/imple/UserSkillDaoImpl.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Country.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/EmploymentHistory.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/Skill.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/User.class&#10;#&#9;jpa/ResumeDbApp/target/classes/org/example/entity/UserSkill.class" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
