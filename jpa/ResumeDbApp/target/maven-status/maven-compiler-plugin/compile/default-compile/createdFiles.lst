@@ -2,12 +2,16 @@ org\example\dao\imple\UserSkillDaoImpl.class
 org\example\dao\inter\UserDaoInter.class
 org\example\dao\imple\UserDaoImpl.class
 org\example\entity\Country.class
+org\example\entity\UserSkill_.class
+org\example\entity\EmploymentHistory_.class
+org\example\entity\Country_.class
 org\example\dao\inter\CountryDaoInter.class
 org\example\entity\User.class
 org\example\main\Context.class
 org\example\dao\inter\SkillDaoInter.class
 org\example\dao\imple\SkillDaoImpl.class
 org\example\dao\inter\UserSkillDaoInter.class
+org\example\entity\Skill_.class
 org\example\Main.class
 org\example\dao\imple\EmploymentHistoryDaoImpl.class
 org\example\dao\inter\AbstractDAO.class
@@ -15,4 +19,5 @@ org\example\entity\Skill.class
 org\example\entity\UserSkill.class
 org\example\dao\imple\CountryDaoImpl.class
 org\example\dao\inter\EmploymentHistoryDaoInter.class
+org\example\entity\User_.class
 org\example\entity\EmploymentHistory.class
