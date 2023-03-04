@@ -9,7 +9,7 @@ import org.example.main.Context;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -33,7 +33,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         Country nationality = new Country(nationalityId, null, nationalityStr);
         Country birthplace = new Country(birthplaceId, birthPlaceStr, null);
 
-        return new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, nationality, birthplace, address);
+        return new User(id, name, surname, phone, email, profileDesc,birthdate, nationality, birthplace, address);
     }
 
     private User getUserSimple(ResultSet rs) throws Exception {
@@ -127,11 +127,11 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             stmt.setString(2, u.getSurname());
             stmt.setString(3, u.getPhone());
             stmt.setString(4, u.getEmail());
-            stmt.setString(5, u.getProfileDesc());
-            stmt.setDate(6, u.getBirthDate());
+            stmt.setString(5, u.getProfileDescription());
+            stmt.setDate(6, (Date) u.getBirthdate());
             stmt.setString(7, u.getAddress());
-            stmt.setInt(8, u.getBirthPlace().getId());
-            stmt.setInt(9, u.getNationality().getId());
+            stmt.setInt(8, u.getBirthplaceId().getId());
+            stmt.setInt(9, u.getNationalityId().getId());
             stmt.setInt(10, u.getId());
             stmt.setString(11, u.getPassword());
 
@@ -191,7 +191,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
             stmt.setString(3, u.getPhone());
             stmt.setString(4, u.getEmail());
             stmt.setString(5, cyrpt.hashToString(4, u.getPassword().toCharArray()));
-            stmt.setString(6, u.getProfileDesc());
+            stmt.setString(6, u.getProfileDescription());
             stmt.setString(7, u.getAddress());
 
             return stmt.execute();

@@ -18,9 +18,9 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
         int historyId = rs.getInt("id");
         String companyName=rs.getString("company_name");
         String position = rs.getString("position");
-        String jobDescription =rs.getString("job_description");
         Date beginDate= rs.getDate("begin_date");
         Date endDate= rs.getDate("end_date");
+                String jobDescription =rs.getString("job_description");
         int userId=rs.getInt("user_id");
         
         EmploymentHistory emp=new EmploymentHistory(historyId, companyName, position,beginDate, endDate,   jobDescription, new User(userId));
@@ -53,10 +53,10 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
             PreparedStatement stmt = c.prepareStatement("update employment_history set company_name=?, position=?, begin_date=?, end_date=?, job_description=? user_id=?,  where id=?");
             stmt.setString(1, u.getCompanyName());
             stmt.setString(2, u.getPosition());
-            stmt.setDate(3, (java.sql.Date) u.getBeingDate());
+            stmt.setDate(3, (java.sql.Date) u.getBeginDate());
             stmt.setDate(4, (java.sql.Date) u.getEndDate());
             stmt.setString(5, u.getJobDescription());
-            stmt.setInt(6, u.getUser().getId());
+            stmt.setInt(6, u.getUserId().getId());
             b = stmt.execute();
             
 //insert into employment_history (company_name , position , begin_date , end_date , job_description, user_id) values (?,?,?,?,?,?) 
@@ -75,10 +75,10 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
             PreparedStatement stmt = c.prepareStatement("update employment_history set company_name=?, position=?, begin_date=?, end_date=?, job_description=? user_id=?,  where id=?");
                 stmt.setString(1, u.getCompanyName());
             stmt.setString(2, u.getPosition());
-            stmt.setDate(3, (java.sql.Date) u.getBeingDate());
+            stmt.setDate(3, (java.sql.Date) u.getBeginDate());
             stmt.setDate(4, (java.sql.Date) u.getEndDate());
             stmt.setString(5, u.getJobDescription());
-            stmt.setInt(6, u.getUser().getId());
+            stmt.setInt(6, u.getUserId().getId());
             stmt.setInt(7, u.getId());
 
             b = stmt.execute();
