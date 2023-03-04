@@ -14,16 +14,16 @@ import java.util.List;
 
 public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
 
-    private UserSkill getUserSkill(ResultSet rs) throws Exception {
-        int userSkillId = rs.getInt("userSkillId");
-        int userId = rs.getInt("id");
-        int skillId = rs.getInt("skill_id");
-        String skillName = rs.getString("skill_name");
-        int power = rs.getInt("power");
-
-        UserSkill us = new UserSkill(userSkillId, new User(userId), new Skill(skillId, skillName), power);
-        return us;
-    }
+//    private UserSkill getUserSkill(ResultSet rs) throws Exception {
+//        int userSkillId = rs.getInt("userSkillId");
+//        int userId = rs.getInt("id");
+//        int skillId = rs.getInt("skill_id");
+//        String skillName = rs.getString("skill_name");
+//        int power = rs.getInt("power");
+//
+//        UserSkill us = new UserSkill(userSkillId, new User(userId), new Skill(skillId, skillName), power);
+//        return us;
+//    }
 
     @Override
     public List<UserSkill> getAllSkillByUserId(int id) {
@@ -45,10 +45,10 @@ public class UserSkillDaoImpl extends AbstractDAO implements UserSkillDaoInter {
             
             ResultSet rs = stmt.getResultSet();
             
-            while (rs.next()) {
-                UserSkill us = getUserSkill(rs);
-                list.add(us);
-            }
+//            while (rs.next()) {
+//                UserSkill us = getUserSkill(rs);
+//                list.add(us);
+//            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
