@@ -26,6 +26,7 @@ public class UserDetailController extends HttpServlet {
             user.setName(name);
             user.setSurname(surname);
             userDao.updateUser(user);
+            System.out.println("user update");
         } else if (action.equals("delete")) {
             userDao.removeUser(id);
         }
