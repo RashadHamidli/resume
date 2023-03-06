@@ -10,7 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1210dc-fbb3-478b-af0e-057d488467df" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
-      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_19__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_41_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_26_02_2023_19_41__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/UserDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/UserDetailController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,21 +272,8 @@
       <workItem from="1677940377485" duration="1173000" />
       <workItem from="1677946751449" duration="1127000" />
       <workItem from="1678011908194" duration="668000" />
-      <workItem from="1678018575824" duration="204000" />
-    </task>
-    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/main'">
-      <created>1677472408529</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1677472408529</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/main'">
-      <created>1677473256346</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1677473256346</updated>
+      <workItem from="1678018575824" duration="250000" />
+      <workItem from="1678035258632" duration="4140000" />
     </task>
     <task id="LOCAL-00008" summary="Merge remote-tracking branch 'origin/main'">
       <created>1677480780900</created>
@@ -612,7 +604,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678018720531</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Merge remote-tracking branch 'origin/main'">
+      <created>1678018793501</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1678018793501</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Merge remote-tracking branch 'origin/main'">
+      <created>1678018808605</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1678018808605</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
