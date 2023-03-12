@@ -21,6 +21,7 @@ public class LogoutController extends HttpServlet {
         String action =request.getParameter("action");
         if(action.equals("logout")) {
             req.getSession().invalidate();
+            response.sendRedirect("login");
         }
     }
 }
