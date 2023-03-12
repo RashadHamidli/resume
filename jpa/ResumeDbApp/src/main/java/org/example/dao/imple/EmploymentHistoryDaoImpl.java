@@ -16,14 +16,14 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
 
     private EmploymentHistory getEmploymentHistory(ResultSet rs) throws Exception {
         int historyId = rs.getInt("id");
-        String companyName=rs.getString("company_name");
+        String companyName = rs.getString("company_name");
         String position = rs.getString("position");
-        Date beginDate= rs.getDate("begin_date");
-        Date endDate= rs.getDate("end_date");
-                String jobDescription =rs.getString("job_description");
-        int userId=rs.getInt("user_id");
-        
-        EmploymentHistory emp=new EmploymentHistory(historyId, companyName, position,beginDate, endDate,   jobDescription, new User(userId));
+        Date beginDate = rs.getDate("begin_date");
+        Date endDate = rs.getDate("end_date");
+        String jobDescription = rs.getString("job_description");
+        int userId = rs.getInt("user_id");
+
+        EmploymentHistory emp = new EmploymentHistory(historyId, companyName, position, beginDate, endDate, jobDescription, new User(userId));
         return emp;
     }
 
@@ -34,7 +34,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
 
             PreparedStatement stmt = c.prepareStatement("select * from employment_history where user_id=?");
             stmt.setInt(1, id);
-            
+
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
@@ -49,7 +49,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
 
     public boolean insertEmploymentHistory(EmploymentHistory u) {
         boolean b = true;
-        try ( Connection c = connect()) {
+        try (Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement("update employment_history set company_name=?, position=?, begin_date=?, end_date=?, job_description=? user_id=?,  where id=?");
             stmt.setString(1, u.getCompanyName());
             stmt.setString(2, u.getPosition());
@@ -58,7 +58,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
             stmt.setString(5, u.getJobDescription());
             stmt.setInt(6, u.getUserId().getId());
             b = stmt.execute();
-            
+
 //insert into employment_history (company_name , position , begin_date , end_date , job_description, user_id) values (?,?,?,?,?,?) 
 
         } catch (Exception ex) {
@@ -70,10 +70,10 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
 
     @Override
     public boolean updateEmploymentHistory(EmploymentHistory u) {
-      boolean b = true;
-        try ( Connection c = connect()) {
+        boolean b = true;
+        try (Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement("update employment_history set company_name=?, position=?, begin_date=?, end_date=?, job_description=? user_id=?,  where id=?");
-                stmt.setString(1, u.getCompanyName());
+            stmt.setString(1, u.getCompanyName());
             stmt.setString(2, u.getPosition());
             stmt.setDate(3, (java.sql.Date) u.getBeginDate());
             stmt.setDate(4, (java.sql.Date) u.getEndDate());
@@ -93,7 +93,7 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
     @Override
     public boolean removeEmploymentHistory(int id) {
         boolean b = true;
-        try ( Connection c = connect()) {
+        try (Connection c = connect()) {
             PreparedStatement stmt = c.prepareStatement("delete from employment_history where id=?");
 
             stmt.setInt(1, id);
@@ -107,6 +107,4 @@ public class EmploymentHistoryDaoImpl extends AbstractDAO implements EmploymentH
     }
 
 
-
-    
 }
