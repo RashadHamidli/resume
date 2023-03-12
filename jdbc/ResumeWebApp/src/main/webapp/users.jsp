@@ -16,6 +16,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="assets/js/users.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <title>JSP page</title>
 </head>
 <body>
@@ -51,15 +55,17 @@
                 <input class="btn btn-primary" type="submit" name="search" value="Search" id="btnsearch">
             </form>
         </div>
+
+        <div class="row">
+            <div class="col col-4">
+                <form action="logout" method="POST">
+                    <input class="glyphicon glyphicon-log-out" type="submit" name="action" value="logout">
+                </form>
+            </div>
+        </div>
         <div class="container">
-            <div class="row">
-                <div class="col col-4">
-                    <form action="logout" method="POST">
-                        <input class="btn btn-primary" type="submit" name="action" value="logout">
-                    </form>
-                </div>
-    </div>
-    <div>
+
+            <i class="bi bi-box-arrow-right"></i>    <div>
         <table class="table">
             <thead>
             <tr>
