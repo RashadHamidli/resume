@@ -1,16 +1,25 @@
 package org.example.dao.imple;
 
+//import at.favre.lib.crypto.bcrypt.BCrypt;
+//import org.example.dao.inter.UserDaoInter;
+//import org.example.entity.Country;
+//import org.example.entity.User;
+//
+//import java.sql.*;
+//import java.util.ArrayList;
+//import java.util.List;
+
+
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import org.example.entity.Country;
-import org.example.entity.User;
 import org.example.dao.inter.AbstractDAO;
 import org.example.dao.inter.UserDaoInter;
+import org.example.entity.Country;
+import org.example.entity.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.sql.*;
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.sql.Connection;
 
 
 public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
@@ -48,7 +57,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         Date birthdate = rs.getDate("birthdate");
         String address = rs.getString("address");
 
-        User user = new User(id, name, surname, phone, email, profileDesc, (java.sql.Date) birthdate, null, null, address);
+        User user = new User(id, name, surname, phone, email, profileDesc, (Date) birthdate, null, null, address);
         user.setPassword(rs.getString("password"));
         return user;
     }
@@ -56,59 +65,66 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
 
     @Override
     public User findByEmailAndPassword(String email, String password) {
-
-        EntityManager em=em();
-        Query q=em.createQuery("select u from User u where u.email=:e and u.password=:p ", User.class);
-        q.setParameter("e", email);
-        q.setParameter("p", password);
-
-        List<User> list=q.getResultList();
-
-       if(list.size()==1){
-           return list.get(0);
-       }
-       return null;
-    }
-    @Override
-    public User findByEmail(String email) {
-        EntityManager em=em();
-        Query q=em.createQuery("select u from User u where u.email=:e ", User.class);
-        q.setParameter("e", email);
-
-        List<User> list=q.getResultList();
-
-        if(list.size()==1){
-            return list.get(0);
+        User result = null;
+        try (Connection c = connect()) {
+            PreparedStatement stmt = c.prepareStatement("select * from user where email=? and password=?");
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result = getUserSimple(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
+        return result;
     }
 
     @Override
     public List<User> getAll(String name, String surname, Integer nationalityId) {
-        EntityManager em=em();
-        String jpql="select u from User u where 1=1 ";
-
+        List<User> result = new ArrayList<>();
+        try (Connection c = connect()) {
+            String sql = " select "
+                    + " u.*, "
+                    + " c.name as birthplace, "
+                    + " n.nationality  "
+                    + " from user u "
+                    + " left join country n on u.nationality_id=n.id "
+                    + " left join country c on u.birthplace_id=c.id where 1=1 ";
             if (name != null && name.trim().isEmpty()) {
-                jpql += " and u.name=:name ";
+                sql += " and name=? ";
             }
             if (surname != null && surname.trim().isEmpty()) {
-                jpql += " and u.surname=:surname ";
+                sql += " and surname=? ";
             }
             if (nationalityId != null) {
-                jpql += " and u.nationality.id=:nid ";
+                sql += " and nationality_id=? ";
             }
-            Query query=em.createQuery(jpql, User.class);
+            PreparedStatement stmt = c.prepareStatement(sql);
+            int i = 1;
             if (name != null && name.trim().isEmpty()) {
-                query.setParameter("name", name);
+                stmt.setString(i, name);
+                i++;
             }
             if (surname != null && surname.trim().isEmpty()) {
-                query.setParameter("surname", surname);
+                stmt.setString(i, surname);
+                i++;
             }
             if (nationalityId != null) {
-                query.setParameter("nid", nationalityId);
+                stmt.setInt(i, nationalityId);
+                i++;
             }
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
 
-        return query.getResultList();
+            while (rs.next()) {
+                User u = getUser(rs);
+                result.add(u);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 
 
@@ -138,7 +154,7 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
 
     @Override
     public boolean removeUser(int id) {
-        try (Connection c = connect();) {
+        try (Connection c = connect()) {
             Statement stmt = c.createStatement();
             return stmt.execute("delete from user where id =" + id);
         } catch (Exception ex) {
@@ -194,7 +210,21 @@ public class UserDaoImpl extends AbstractDAO implements UserDaoInter {
         }
     }
 
-
+    @Override
+    public User findByEmail(String email) {
+        User result = null;
+        try (Connection c = connect()) {
+            PreparedStatement stmt = c.prepareStatement("select * from user where email=?");
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                result = getUserSimple(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 
 }

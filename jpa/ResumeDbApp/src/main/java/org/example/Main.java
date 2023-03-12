@@ -10,9 +10,9 @@ import org.example.main.Context;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        User u = new User(25, "Rashad", "Hamidli", "mr_rashad@email.com", "+994708288899", "new Java Application", null, null, null, "Baku, Azerbaijan");
-       u.setPassword("12345");
-        new UserDaoImpl().addUser(u);
+       UserDaoInter dao=Context.instanceUserDao();
+        User u=dao.findByEmail("mr_rashad@email.com");
+        System.out.println("u "+u);
     }
 
 }
