@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.example.entity.User;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-03-04T16:34:17", comments="EclipseLink-2.7.10.v20211216-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2023-03-11T11:39:47", comments="EclipseLink-2.7.10.v20211216-rNA")
 @StaticMetamodel(EmploymentHistory.class)
 public class EmploymentHistory_ { 
 
