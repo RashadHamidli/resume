@@ -10,10 +10,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd3deace-f54a-4b55-970f-e9cf5c29d1ff" name="Changes" comment="add">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/CountryDaoInter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/CountryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/EmploymentHistoryDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/SkillDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/UserDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/UserSkillDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/AbstractDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/EmploymentHistoryDaoInter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/SkillDaoInter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/UserDaoInter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/UserSkillDaoInter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/entity/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/entity/EmploymentHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/entity/Skill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/entity/UserSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/ResumeDbAppJpaSpringApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/imple/CountryDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/imple/EmploymentHistoryDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/imple/SkillDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/imple/UserDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/AbstractDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/CountryDaoInter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/EmploymentHistoryDaoInter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/SkillDaoInter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/UserDaoInter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/dao/inter/UserSkillDaoInter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/entity/Country.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/entity/EmploymentHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/entity/Skill.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/org/example/entity/UserSkill.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/resources/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/test/java/org/example/ResumeDbAppJpaSpringApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/CountryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/imple/CountryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/EmploymentHistoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/imple/EmploymentHistoryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/imple/SkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/imple/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/imple/UserSkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/AbstractDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/AbstractDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/CountryDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/CountryDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/EmploymentHistoryDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/EmploymentHistoryDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/SkillDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/SkillDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/UserDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/dao/inter/UserSkillDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/UserSkillDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/entity/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/entity/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/entity/EmploymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/entity/EmploymentHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/entity/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/entity/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/entity/UserSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/entity/UserSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/org/example/main/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/main/Context.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/ErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/controller/ErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/controller/LogoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/controller/UserDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/controller/UserDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/filter/JspFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/filter/JspFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/filter/SecurityFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/filter/SecurityFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/resume/util/ControllerUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/resume/util/ControllerUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userdetail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userdetail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/CountryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/imple/CountryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/EmploymentHistoryDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/imple/EmploymentHistoryDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/imple/SkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/imple/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/UserSkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/imple/UserSkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/AbstractDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/AbstractDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/CountryDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/inter/CountryDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/EmploymentHistoryDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/EmploymentHistoryDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/SkillDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/SkillDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/UserDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/UserDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/inter/UserSkillDaoInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/dao/inter/UserSkillDaoInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/entity/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/entity/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/entity/EmploymentHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/entity/EmploymentHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/entity/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/entity/Skill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/entity/UserSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ResumeDbAppJPASpring/src/main/java/com/company/entity/UserSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/main/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/main/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/Country_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/Country_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/EmploymentHistory_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/EmploymentHistory_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/Skill_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/Skill_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/UserSkill_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/UserSkill_.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/User_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/User_.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +247,9 @@
       <updated>1678550051282</updated>
       <workItem from="1678550052647" duration="1134000" />
       <workItem from="1678601542094" duration="6480000" />
+      <workItem from="1678629468641" duration="603000" />
+      <workItem from="1678706095668" duration="874000" />
+      <workItem from="1678709032643" duration="623000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1678602358970</created>

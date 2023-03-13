@@ -1,6 +1,6 @@
-<%@ page import="org.example.dao.inter.UserDaoInter" %>
-<%@ page import="org.example.main.Context" %>
-<%@ page import="org.example.entity.User" %>
+<%@ page import="com.company.dao.inter.UserDaoInter" %>
+<%@ page import="com.company.main.Context" %>
+<%@ page import="com.company.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
