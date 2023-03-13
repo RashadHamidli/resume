@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd3deace-f54a-4b55-970f-e9cf5c29d1ff" name="Changes" comment="add">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/../ResumeDbApp/src/main/java/com/company/dao/inter/CountryDaoInter.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/Main.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/com/company/dao/imple/CountryDaoImpl.java" afterDir="false" />
@@ -106,6 +107,12 @@
       <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/Skill_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/Skill_.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/UserSkill_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/UserSkill_.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/org/example/entity/User_.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/generated-sources/annotations/com/company/entity/User_.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" afterDir="false" />
+>>>>>>> origin/main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,8 +255,11 @@
       <workItem from="1678550052647" duration="1134000" />
       <workItem from="1678601542094" duration="6480000" />
       <workItem from="1678629468641" duration="603000" />
+<<<<<<< HEAD
       <workItem from="1678706095668" duration="874000" />
       <workItem from="1678709032643" duration="623000" />
+=======
+>>>>>>> origin/main
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1678602358970</created>
