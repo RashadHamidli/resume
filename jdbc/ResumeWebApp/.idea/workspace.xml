@@ -10,10 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd3deace-f54a-4b55-970f-e9cf5c29d1ff" name="Changes" comment="add">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/src/main/java/org/example/dao/imple/SkillDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../jpa/ResumeDbApp/target/classes/org/example/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +155,7 @@
       <updated>1678550051282</updated>
       <workItem from="1678550052647" duration="1134000" />
       <workItem from="1678601542094" duration="6480000" />
+      <workItem from="1678629468641" duration="603000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1678602358970</created>
