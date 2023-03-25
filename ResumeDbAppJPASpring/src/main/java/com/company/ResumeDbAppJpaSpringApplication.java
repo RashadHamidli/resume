@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.dao.imple.UserDaoImpl;
+import com.company.dao.inter.UserRepository;
 import com.company.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,17 +20,30 @@ public class ResumeDbAppJpaSpringApplication {
         SpringApplication.run(ResumeDbAppJpaSpringApplication.class, args);
     }
 
+//    @Bean
+//    public CommandLineRunner run(){
+//        CommandLineRunner clr=new CommandLineRunner(){
+//            @Override
+//            public void run(String... args) throws Exception {
+//                List<User> list=userDao.getAll(null,null,null);
+//                System.out.println(list);
+//            }
+//        };
+//        return clr;
+//    }
+
+    @Autowired
+    private UserRepository userRepository;
     @Bean
     public CommandLineRunner run(){
         CommandLineRunner clr=new CommandLineRunner(){
             @Override
             public void run(String... args) throws Exception {
-                List<User> list=userDao.getAll(null,null,null);
-                System.out.println(list);
+                User user=userRepository.findByNameAndSurnameAndEmail("Online", "Carats", "online.carats@gmail.com");
+                System.out.println(user);
 
             }
         };
         return clr;
     }
-
 }
